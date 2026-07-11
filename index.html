@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Clothing Store - Premium Fashion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background: #e74c3c;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: #c0392b;
+        }
+
+        /* Store Info */
+        .store-info {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .info-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .rating {
+            color: #f39c12;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        /* Collections Section */
+        .collections {
+            background: #f7f7f7;
+            padding: 4rem 5%;
+        }
+
+        .collections h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #2c3e50;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .collection-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .collection-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .collection-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .collection-item .content {
+            padding: 1.5rem;
+        }
+
+        .collection-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reviews h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #2c3e50;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid #e74c3c;
+        }
+
+        .review-card .reviewer {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-card .stars {
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .review-card .review-text {
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Hours Section */
+        .hours {
+            background: #e74c3c;
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .hours h2 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hours-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .hours-item .day {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #2c3e50;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: #f7f7f7;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Example Clothing Store</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#hours">Hours</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Example Clothing Store</h1>
+        <div class="rating">
+            ★★★★☆ 4.9
+        </div>
+        <p>Premium clothing store with amazing collections and really cool customer service</p>
+        <a href="#contact" class="cta-button">Visit Us Today</a>
+        <div style="margin-top: 20px; font-size: 0.9rem;">
+            76 Reviews
+        </div>
+    </section>
+
+    <section class="store-info">
+        <div class="info-card">
+            <div class="icon">📍</div>
+            <h3>Our Location</h3>
+            <p>Gujarati St, Kuttichira<br>Kozhikode, Kerala 673001</p>
+        </div>
+        <div class="info-card">
+            <div class="icon">📞</div>
+            <h3>Contact Us</h3>
+            <p>096560 03555</p>
+        </div>
+        <div class="info-card">
+            <div class="icon">⭐</div>
+            <h3>Rating</h3>
+            <div class="rating">★★★★★</div>
+            <p>4.9 (76 reviews)</p>
+        </div>
+    </section>
+
+    <section id="collections" class="collections">
+        <h2>Our Collections</h2>
+        <div class="collection-grid">
+            <div class="collection-item">
+                <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400" alt="Men's Fashion">
+                <div class="content">
+                    <h3>Men's Collection</h3>
+                    <p>Premium clothing for every occasion</p>
+                </div>
+            </div>
+            <div class="collection-item">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400" alt="Women's Fashion">
+                <div class="content">
+                    <h3>Women's Collection</h3>
+                    <p>Elegant styles and rare pieces</p>
+                </div>
+            </div>
+            <div class="collection-item">
+                <img src="https://images.unsplash.com/photo-1425519191169-0b6a47b0e0e0?w=400" alt="Accessories">
+                <div class="content">
+                    <h3>Accessories</h3>
+                    <p>Complete your look</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews">
+        <h2>What Our Customers Say</h2>
+        <div class="review-grid">
+            <div class="review-card">
+                <div class="reviewer">Google Review</div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Amazing collections, really cool customer service."</p>
+            </div>
+            <div class="review-card">
+                <div class="reviewer">Google Review</div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"They were amazing - had rare pieces at great prices"</p>
+            </div>
+            <div class="review-card">
+                <div class="reviewer">Google Review</div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Awesome collection 👍👍"</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="https://g.page/r/example-clothing-store/review" class="cta-button">Rate and Review on Google</a>
+        </div>
+    </section>
+
+    <section id="hours" class="hours">
+        <h2>Operating Hours</h2>
+        <div class="hours-grid">
+            <div class="hours-item">
+                <div class="day">Monday - Friday</div>
+                <div>11 AM - 10 PM</div>
+            </div>
+            <div class="hours-item">
+                <div class="day">Saturday</div>
+                <div>11 AM - 10 PM</div>
+            </div>
+            <div class="hours-item">
+                <div class="day">Sunday</div>
+                <div>11 AM - 10 PM</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Visit Our Store</h3>
+                <p>Gujarati St, Kuttichira<br>Kozhikode, Kerala 673001</p>
+                <br>
+                <a href="https://maps.google.com/?q=Gujarati+St,+Kuttichira,+Kozhikode,+Kerala+673001" target="_blank" class="cta-button" style="display: inline-block;">Get Directions</a>
+            </div>
+            <div class="contact-card">
+                <h3>Call Us</h3>
+                <p>096560 03555</p>
+                <br>
+                <a href="tel:+919656003555" class="cta-button" style="display: inline-block;">Call Now</a>
+            </div>
+            <div class="contact-card">
+                <h3>Share</h3>
+                <p>Spread the word about our amazing collections!</p>
+                <br>
+                <button onclick="shareStore()" class="cta-button">Share Store</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Example Clothing Store. All rights reserved.</p>
+        <p>Gujarati St, Kuttichira, Kozhikode, Kerala 673001</p>
+    </footer>
+
+    <script>
+        function shareStore() {
+            const storeInfo = {
+                title: 'Example Clothing Store',
+                text: 'Check out Example Clothing Store! Amazing collections with 4.9 ⭐ rating! Located at Gujarati St, Kuttichira, Kozhikode.',
+                url: 'https://maps.google.com/?q=Example+Clothing+Store+Gujarati+St+Kuttichira+Kozhikode'
+            };
+
+            if (navigator.share) {
+                navigator.share(storeInfo)
+                    .then(() => console.log('Shared successfully'))
+                    .catch((error) => console.log('Error sharing:', error));
+            } else {
+                // Fallback - copy to clipboard
+                const text = `${storeInfo.title}\n${storeInfo.text}\n${storeInfo.url}`;
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Store information copied to clipboard!');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
