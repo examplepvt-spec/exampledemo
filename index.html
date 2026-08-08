@@ -3,461 +3,540 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example Clothing Store - Premium Fashion</title>
+    <title>Example Clothing | Premium Apparel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        :root {
+            --primary-black: #111;
+            --secondary-gray: #f5f5f5;
+            --accent-red: #e53935;
+            --light-gray: #e0e0e0;
+            --dark-gray: #757575;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            background-color: #fff;
+            color: var(--primary-black);
+            overflow-x: hidden;
         }
 
         /* Header Styles */
         header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
-            width: 100%;
             top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-        }
-
-        nav {
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #2c3e50;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-transform: uppercase;
         }
 
-        .nav-links {
+        .logo span {
+            color: var(--accent-red);
+        }
+
+        nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
         }
 
-        .nav-links a {
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
             text-decoration: none;
-            color: #2c3e50;
+            color: var(--primary-black);
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .nav-links a:hover {
-            color: #e74c3c;
+        nav ul li a:hover {
+            color: var(--accent-red);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-red);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-icons i {
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .header-icons i:hover {
+            transform: scale(1.1);
+            color: var(--accent-red);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8rem 5% 4rem;
-            text-align: center;
-            min-height: 60vh;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: white;
+            margin-top: 70px;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 70px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            max-width: 800px;
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 20px;
+            margin-bottom: 30px;
             max-width: 600px;
+            opacity: 0.9;
         }
 
-        .cta-button {
-            background: #e74c3c;
+        .btn {
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid white;
             color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
             cursor: pointer;
-            transition: background 0.3s;
-            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
         }
 
-        .cta-button:hover {
-            background: #c0392b;
+        .btn:hover {
+            background: white;
+            color: black;
         }
 
-        /* Store Info */
-        .store-info {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 5%;
+        /* Featured Products */
+        .section-title {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 30px;
+            padding: 20px 5%;
         }
 
-        .info-card {
-            background: white;
-            padding: 2rem;
+        .product-card {
+            position: relative;
+            overflow: hidden;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .info-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .product-card:hover {
+            transform: translateY(-10px);
         }
 
-        .info-card h3 {
-            margin-bottom: 1rem;
-            color: #2c3e50;
+        .product-img {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
         }
 
-        .rating {
-            color: #f39c12;
-            font-size: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        /* Collections Section */
-        .collections {
-            background: #f7f7f7;
-            padding: 4rem 5%;
-        }
-
-        .collections h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            color: #2c3e50;
-        }
-
-        .collection-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .collection-item {
+        .product-info {
+            padding: 20px;
             background: white;
+        }
+
+        .product-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 50px 5%;
+        }
+
+        .category-card {
+            width: 300px;
+            height: 400px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .collection-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .collection-item img {
+        .category-img {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
         }
 
-        .collection-item .content {
-            padding: 1.5rem;
+        .category-card:hover .category-img {
+            transform: scale(1.1);
         }
 
-        .collection-item h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Reviews Section */
-        .reviews {
-            padding: 4rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .reviews h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            color: #2c3e50;
-        }
-
-        .review-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .review-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-left: 4px solid #e74c3c;
-        }
-
-        .review-card .reviewer {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .review-card .stars {
-            color: #f39c12;
-            margin-bottom: 1rem;
-        }
-
-        .review-card .review-text {
-            font-style: italic;
-            color: #666;
-        }
-
-        /* Hours Section */
-        .hours {
-            background: #e74c3c;
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 4rem 5%;
-            text-align: center;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
 
-        .hours h2 {
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-        }
-
-        .hours-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .hours-item {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem;
-            border-radius: 5px;
-        }
-
-        .hours-item .day {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 4rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            color: #2c3e50;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .contact-card {
-            background: #f7f7f7;
-            padding: 2rem;
-            border-radius: 10px;
-        }
-
-        .contact-card h3 {
-            margin-bottom: 1rem;
+        .category-card:hover .category-overlay {
+            transform: translateY(0);
         }
 
         /* Footer */
         footer {
-            background: #2c3e50;
+            background: var(--primary-black);
             color: white;
+            padding: 70px 5% 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-red);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons i {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons i:hover {
+            background: var(--accent-red);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
             text-align: center;
-            padding: 2rem 5%;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
+        <div class="logo">Example<span>.</span></div>
         <nav>
-            <div class="logo">Example Clothing Store</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#collections">Collections</a></li>
-                <li><a href="#reviews">Reviews</a></li>
-                <li><a href="#hours">Hours</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul>
+                <li><a href="#">New Releases</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Sale</a></li>
             </ul>
         </nav>
+        <div class="header-icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-user"></i>
+            <i class="fas fa-shopping-bag"></i>
+        </div>
     </header>
 
-    <section id="home" class="hero">
-        <h1>Example Clothing Store</h1>
-        <div class="rating">
-            ★★★★☆ 4.9
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Premium Apparel For The Modern Lifestyle</h1>
+        <p>Discover our exclusive collection designed for performance and style.</p>
+        <button class="btn">Shop Collection</button>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="section-title">
+            <h2>Featured Products</h2>
         </div>
-        <p>Premium clothing store with amazing collections and really cool customer service</p>
-        <a href="#contact" class="cta-button">Visit Us Today</a>
-        <div style="margin-top: 20px; font-size: 0.9rem;">
-            76 Reviews
+        <div class="products">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
+                <div class="product-info">
+                    <h3>Performance T-Shirt</h3>
+                    <p>Lightweight, breathable fabric with moisture-wicking technology</p>
+                    <div class="price">$49.99</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
+                <div class="product-info">
+                    <h3>Urban Joggers</h3>
+                    <p>Tapered fit with elastic waistband and zip pockets</p>
+                    <div class="price">$89.99</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80');"></div>
+                <div class="product-info">
+                    <h3>Premium Hoodie</h3>
+                    <p>Oversized fit with kangaroo pocket and adjustable drawstring</p>
+                    <div class="price">$129.99</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="store-info">
-        <div class="info-card">
-            <div class="icon">📍</div>
-            <h3>Our Location</h3>
-            <p>Gujarati St, Kuttichira<br>Kozhikode, Kerala 673001</p>
+    <!-- Categories -->
+    <section class="categories-section">
+        <div class="section-title">
+            <h2>Shop By Category</h2>
         </div>
-        <div class="info-card">
-            <div class="icon">📞</div>
-            <h3>Contact Us</h3>
-            <p>096560 03555</p>
-        </div>
-        <div class="info-card">
-            <div class="icon">⭐</div>
-            <h3>Rating</h3>
-            <div class="rating">★★★★★</div>
-            <p>4.9 (76 reviews)</p>
-        </div>
-    </section>
-
-    <section id="collections" class="collections">
-        <h2>Our Collections</h2>
-        <div class="collection-grid">
-            <div class="collection-item">
-                <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400" alt="Men's Fashion">
-                <div class="content">
+        <div class="categories">
+            <div class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1593030103066-0093718efeb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
+                <div class="category-overlay">
                     <h3>Men's Collection</h3>
-                    <p>Premium clothing for every occasion</p>
+                    <p>Discover our latest menswear</p>
                 </div>
             </div>
-            <div class="collection-item">
-                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400" alt="Women's Fashion">
-                <div class="content">
+            <div class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1773&q=80');"></div>
+                <div class="category-overlay">
                     <h3>Women's Collection</h3>
-                    <p>Elegant styles and rare pieces</p>
+                    <p>Elevate your everyday style</p>
                 </div>
             </div>
-            <div class="collection-item">
-                <img src="https://images.unsplash.com/photo-1425519191169-0b6a47b0e0e0?w=400" alt="Accessories">
-                <div class="content">
-                    <h3>Accessories</h3>
-                    <p>Complete your look</p>
+            <div class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
+                <div class="category-overlay">
+                    <h3>Kids' Collection</h3>
+                    <p>Comfortable and stylish for every child</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="reviews" class="reviews">
-        <h2>What Our Customers Say</h2>
-        <div class="review-grid">
-            <div class="review-card">
-                <div class="reviewer">Google Review</div>
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Amazing collections, really cool customer service."</p>
-            </div>
-            <div class="review-card">
-                <div class="reviewer">Google Review</div>
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"They were amazing - had rare pieces at great prices"</p>
-            </div>
-            <div class="review-card">
-                <div class="reviewer">Google Review</div>
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Awesome collection 👍👍"</p>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="https://g.page/r/example-clothing-store/review" class="cta-button">Rate and Review on Google</a>
-        </div>
-    </section>
-
-    <section id="hours" class="hours">
-        <h2>Operating Hours</h2>
-        <div class="hours-grid">
-            <div class="hours-item">
-                <div class="day">Monday - Friday</div>
-                <div>11 AM - 10 PM</div>
-            </div>
-            <div class="hours-item">
-                <div class="day">Saturday</div>
-                <div>11 AM - 10 PM</div>
-            </div>
-            <div class="hours-item">
-                <div class="day">Sunday</div>
-                <div>11 AM - 10 PM</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <h3>Visit Our Store</h3>
-                <p>Gujarati St, Kuttichira<br>Kozhikode, Kerala 673001</p>
-                <br>
-                <a href="https://maps.google.com/?q=Gujarati+St,+Kuttichira,+Kozhikode,+Kerala+673001" target="_blank" class="cta-button" style="display: inline-block;">Get Directions</a>
-            </div>
-            <div class="contact-card">
-                <h3>Call Us</h3>
-                <p>096560 03555</p>
-                <br>
-                <a href="tel:+919656003555" class="cta-button" style="display: inline-block;">Call Now</a>
-            </div>
-            <div class="contact-card">
-                <h3>Share</h3>
-                <p>Spread the word about our amazing collections!</p>
-                <br>
-                <button onclick="shareStore()" class="cta-button">Share Store</button>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Example Clothing Store. All rights reserved.</p>
-        <p>Gujarati St, Kuttichira, Kozhikode, Kerala 673001</p>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Example Clothing</h3>
+                <p>Premium apparel crafted for the modern lifestyle. Combining performance with style since 2015.</p>
+                <div class="social-icons">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Sale</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, New York</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@exampleclothing.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Example Clothing. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
-        function shareStore() {
-            const storeInfo = {
-                title: 'Example Clothing Store',
-                text: 'Check out Example Clothing Store! Amazing collections with 4.9 ⭐ rating! Located at Gujarati St, Kuttichira, Kozhikode.',
-                url: 'https://maps.google.com/?q=Example+Clothing+Store+Gujarati+St+Kuttichira+Kozhikode'
-            };
-
-            if (navigator.share) {
-                navigator.share(storeInfo)
-                    .then(() => console.log('Shared successfully'))
-                    .catch((error) => console.log('Error sharing:', error));
-            } else {
-                // Fallback - copy to clipboard
-                const text = `${storeInfo.title}\n${storeInfo.text}\n${storeInfo.url}`;
-                navigator.clipboard.writeText(text).then(() => {
-                    alert('Store information copied to clipboard!');
+        // Simple animation for product cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const productCards = document.querySelectorAll('.product-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
                 });
-            }
-        }
+            }, { threshold: 0.1 });
+            
+            productCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Button hover effect enhancement
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    button.style.boxShadow = '0 5px 15px rgba(229, 57, 53, 0.4)';
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    button.style.boxShadow = 'none';
+                });
+            });
+        });
     </script>
 </body>
 </html>
