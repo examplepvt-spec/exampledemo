@@ -3,540 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example Clothing | Premium Apparel</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        :root {
-            --primary-black: #111;
-            --secondary-gray: #f5f5f5;
-            --accent-red: #e53935;
-            --light-gray: #e0e0e0;
-            --dark-gray: #757575;
-        }
-
-        body {
-            background-color: #fff;
-            color: var(--primary-black);
-            overflow-x: hidden;
-        }
-
-        /* Header Styles */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            text-transform: uppercase;
-        }
-
-        .logo span {
-            color: var(--accent-red);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--primary-black);
-            font-weight: 500;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent-red);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-red);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .header-icons i {
-            font-size: 20px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .header-icons i:hover {
-            transform: scale(1.1);
-            color: var(--accent-red);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            color: white;
-            margin-top: 70px;
-        }
-
-        .hero h1 {
-            font-size: 70px;
-            font-weight: 800;
-            letter-spacing: -2px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            max-width: 800px;
-            line-height: 1.1;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            max-width: 600px;
-            opacity: 0.9;
-        }
-
-        .btn {
-            padding: 15px 40px;
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover {
-            background: white;
-            color: black;
-        }
-
-        /* Featured Products */
-        .section-title {
-            text-align: center;
-            padding: 80px 20px 40px;
-        }
-
-        .section-title h2 {
-            font-size: 40px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            text-transform: uppercase;
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 20px 5%;
-        }
-
-        .product-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .product-img {
-            height: 400px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .product-info {
-            padding: 20px;
-            background: white;
-        }
-
-        .product-info h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .product-info p {
-            color: var(--dark-gray);
-            margin-bottom: 15px;
-        }
-
-        .price {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        /* Categories */
-        .categories {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 50px 5%;
-        }
-
-        .category-card {
-            width: 300px;
-            height: 400px;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .category-img {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.5s ease;
-        }
-
-        .category-card:hover .category-img {
-            transform: scale(1.1);
-        }
-
-        .category-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .category-card:hover .category-overlay {
-            transform: translateY(0);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-black);
-            color: white;
-            padding: 70px 5% 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent-red);
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 15px;
-        }
-
-        .footer-column ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-column ul li a:hover {
-            color: white;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons i {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .social-icons i:hover {
-            background: var(--accent-red);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #333;
-            color: #aaa;
-            font-size: 14px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 50px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 15px;
-            }
-            
-            nav ul {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 40px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .section-title h2 {
-                font-size: 30px;
-            }
-        }
-    </style>
+    <title>Three-Trading-Bot | Paper Monitor</title>
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">Example<span>.</span></div>
-        <nav>
-            <ul>
-                <li><a href="#">New Releases</a></li>
-                <li><a href="#">Men</a></li>
-                <li><a href="#">Women</a></li>
-                <li><a href="#">Kids</a></li>
-                <li><a href="#">Sale</a></li>
-            </ul>
-        </nav>
-        <div class="header-icons">
-            <i class="fas fa-search"></i>
-            <i class="fas fa-user"></i>
-            <i class="fas fa-shopping-bag"></i>
-        </div>
-    </header>
+    <!-- Top Warning Banner -->
+    <div class="safety-banner">
+        <span class="warning-icon">🔴</span>
+        <strong>REAL FYERS LIVE MARKET DATA / PAPER TRADING ONLY</strong>
+        <span class="banner-separator">|</span>
+        NO REAL ORDERS WILL BE EXECUTED
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Premium Apparel For The Modern Lifestyle</h1>
-        <p>Discover our exclusive collection designed for performance and style.</p>
-        <button class="btn">Shop Collection</button>
-    </section>
+    <!-- Main Application Container -->
+    <div class="app-container">
+        
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="logo">
+                <h1>Three<span class="highlight">Bot</span></h1>
+                <p class="subtitle">Algorithmic Monitor</p>
+            </div>
+            <div class="status-panel">
+                <div class="status-item">
+                    <span class="status-label">Backend</span>
+                    <div class="status-indicator" id="status-backend">
+                        <span class="dot"></span>
+                        <span class="text">Connecting...</span>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">WebSocket</span>
+                    <div class="status-indicator" id="status-ws">
+                        <span class="dot"></span>
+                        <span class="text">Connecting...</span>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <!-- Featured Products -->
-    <section class="featured-products">
-        <div class="section-title">
-            <h2>Featured Products</h2>
-        </div>
-        <div class="products">
-            <div class="product-card">
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
-                <div class="product-info">
-                    <h3>Performance T-Shirt</h3>
-                    <p>Lightweight, breathable fabric with moisture-wicking technology</p>
-                    <div class="price">$49.99</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
-                <div class="product-info">
-                    <h3>Urban Joggers</h3>
-                    <p>Tapered fit with elastic waistband and zip pockets</p>
-                    <div class="price">$89.99</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80');"></div>
-                <div class="product-info">
-                    <h3>Premium Hoodie</h3>
-                    <p>Oversized fit with kangaroo pocket and adjustable drawstring</p>
-                    <div class="price">$129.99</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories -->
-    <section class="categories-section">
-        <div class="section-title">
-            <h2>Shop By Category</h2>
-        </div>
-        <div class="categories">
-            <div class="category-card">
-                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1593030103066-0093718efeb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
-                <div class="category-overlay">
-                    <h3>Men's Collection</h3>
-                    <p>Discover our latest menswear</p>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1773&q=80');"></div>
-                <div class="category-overlay">
-                    <h3>Women's Collection</h3>
-                    <p>Elevate your everyday style</p>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
-                <div class="category-overlay">
-                    <h3>Kids' Collection</h3>
-                    <p>Comfortable and stylish for every child</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Example Clothing</h3>
-                <p>Premium apparel crafted for the modern lifestyle. Combining performance with style since 2015.</p>
-                <div class="social-icons">
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-youtube"></i>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3>Shop</h3>
-                <ul>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="#">Sale</a></li>
-                    <li><a href="#">Collections</a></li>
-                    <li><a href="#">Accessories</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Help</h3>
-                <ul>
-                    <li><a href="#">Customer Service</a></li>
-                    <li><a href="#">Track Order</a></li>
-                    <li><a href="#">Returns & Exchanges</a></li>
-                    <li><a href="#">Shipping Info</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, New York</li>
-                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                    <li><i class="fas fa-envelope"></i> info@exampleclothing.com</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2023 Example Clothing. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Simple animation for product cards on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const productCards = document.querySelectorAll('.product-card');
+        <!-- Main Content -->
+        <main class="dashboard">
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            productCards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
-            });
-            
-            // Button hover effect enhancement
-            const buttons = document.querySelectorAll('.btn');
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', () => {
-                    button.style.boxShadow = '0 5px 15px rgba(229, 57, 53, 0.4)';
-                });
+            <!-- Strategy Monitor Section -->
+            <div class="section-title">
+                <h2>Strategy Monitor (Paper)</h2>
+            </div>
+            <div class="strategy-panel glass-panel">
+                <div class="pnl-summary" id="pnl-summary">
+                    <div class="pnl-stat">
+                        <span class="label">Net P&L</span>
+                        <span class="value" id="val-net-pnl">--</span>
+                    </div>
+                    <div class="pnl-stat">
+                        <span class="label">Gross P&L</span>
+                        <span class="value" id="val-gross-pnl">--</span>
+                    </div>
+                    <div class="pnl-stat">
+                        <span class="label">Trades</span>
+                        <span class="value" id="val-trades">--</span>
+                    </div>
+                    <div class="pnl-stat">
+                        <span class="label">Win Rate</span>
+                        <span class="value" id="val-win-rate">--</span>
+                    </div>
+                </div>
                 
-                button.addEventListener('mouseleave', () => {
-                    button.style.boxShadow = 'none';
-                });
-            });
-        });
-    </script>
+                <h3 class="subsection-title">Open Positions</h3>
+                <div class="table-container">
+                    <table class="data-table" id="positions-table">
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Entry Time</th>
+                                <th>Entry Price</th>
+                                <th>Qty</th>
+                                <th>Stop Loss</th>
+                                <th>Take Profit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="6" class="text-center">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section-title mt-4">
+                <h2>Live Watchlist</h2>
+            </div>
+            
+            <div class="grid" id="watchlist-grid">
+                <!-- Cards will be dynamically injected here -->
+                <div class="loading-state">Loading market data...</div>
+            </div>
+        </main>
+
+        <!-- Details Modal -->
+        <div class="modal-overlay" id="details-modal" style="display: none;">
+            <div class="modal-content glass-panel">
+                <div class="modal-header">
+                    <h2 id="modal-title">Symbol Details</h2>
+                    <button class="close-btn" id="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="data-section">
+                        <h3>Recent Ticks (Top 10)</h3>
+                        <div class="table-container">
+                            <table class="data-table" id="ticks-table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Price</th>
+                                        <th>Volume</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Tick rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="data-section mt-4">
+                        <h3>Recent 1m Candles (Top 10)</h3>
+                        <div class="table-container">
+                            <table class="data-table" id="candles-table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>O</th>
+                                        <th>H</th>
+                                        <th>L</th>
+                                        <th>C</th>
+                                        <th>Vol</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Candle rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/api.js"></script>
+    <script src="/js/websocket.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>
