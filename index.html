@@ -1,162 +1,917 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three-Trading-Bot | Paper Monitor</title>
-    <!-- Premium Google Fonts -->
+    <title>AURELIA — Modern Minimalist Luxury & Sustainable Fashion</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0A0A0A',
+                            surface: '#121212',
+                            card: '#1A1A1A',
+                            border: '#2A2A2A',
+                            gold: '#D4AF37',
+                            sand: '#EFECE6',
+                            muted: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* Custom smooth scrollbar & selection */
+        ::selection {
+            background: #D4AF37;
+            color: #0A0A0A;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A2A2A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+    </style>
 </head>
-<body>
-    <!-- Top Warning Banner -->
-    <div class="safety-banner">
-        <span class="warning-icon">🔴</span>
-        <strong>REAL FYERS LIVE MARKET DATA / PAPER TRADING ONLY</strong>
-        <span class="banner-separator">|</span>
-        NO REAL ORDERS WILL BE EXECUTED
-    </div>
+<body class="bg-brand-dark text-brand-sand font-sans antialiased overflow-x-hidden selection:bg-brand-gold selection:text-black">
 
-    <!-- Main Application Container -->
-    <div class="app-container">
-        
-        <!-- Header Section -->
-        <header class="app-header">
-            <div class="logo">
-                <h1>Three<span class="highlight">Bot</span></h1>
-                <p class="subtitle">Algorithmic Monitor</p>
-            </div>
-            <div class="status-panel">
-                <div class="status-item">
-                    <span class="status-label">Backend</span>
-                    <div class="status-indicator" id="status-backend">
-                        <span class="dot"></span>
-                        <span class="text">Connecting...</span>
-                    </div>
-                </div>
-                <div class="status-item">
-                    <span class="status-label">WebSocket</span>
-                    <div class="status-indicator" id="status-ws">
-                        <span class="dot"></span>
-                        <span class="text">Connecting...</span>
-                    </div>
-                </div>
-            </div>
-        </header>
+    <!-- 1. STICKY NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="font-serif text-2xl tracking-[0.2em] font-bold text-white hover:text-brand-gold transition-colors">
+                AURELIA
+            </a>
 
-        <!-- Main Content -->
-        <main class="dashboard">
-            
-            <!-- Strategy Monitor Section -->
-            <div class="section-title">
-                <h2>Strategy Monitor (Paper)</h2>
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider text-brand-muted">
+                <a href="#collection" class="hover:text-white transition-colors">COLLECTION</a>
+                <a href="#features" class="hover:text-white transition-colors">CRAFT</a>
+                <a href="#showcase" class="hover:text-white transition-colors">EDITORIAL</a>
+                <a href="#testimonials" class="hover:text-white transition-colors">REVIEWS</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+            </nav>
+
+            <!-- Utility Action Icons -->
+            <div class="flex items-center space-x-5">
+                <button aria-label="Search" class="text-brand-muted hover:text-white transition-colors p-2">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </button>
+                <button aria-label="Wishlist" class="hidden sm:block text-brand-muted hover:text-white transition-colors p-2 relative">
+                    <i data-lucide="heart" class="w-5 h-5"></i>
+                    <span class="absolute top-1 right-1 w-2 h-2 bg-brand-gold rounded-full"></span>
+                </button>
+                <button onclick="toggleCart()" aria-label="Cart" class="text-brand-muted hover:text-white transition-colors p-2 relative group">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                    <span class="absolute -top-1 -right-1 bg-brand-gold text-brand-dark text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+                </button>
+                <a href="#collection" class="hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold tracking-widest uppercase bg-white text-black hover:bg-brand-gold transition-all duration-300 rounded-full">
+                    Shop Drop
+                </a>
+                <!-- Mobile Menu Toggle -->
+                <button onclick="toggleMobileMenu()" aria-label="Menu" class="md:hidden text-white p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
             </div>
-            <div class="strategy-panel glass-panel">
-                <div class="pnl-summary" id="pnl-summary">
-                    <div class="pnl-stat">
-                        <span class="label">Net P&L</span>
-                        <span class="value" id="val-net-pnl">--</span>
-                    </div>
-                    <div class="pnl-stat">
-                        <span class="label">Gross P&L</span>
-                        <span class="value" id="val-gross-pnl">--</span>
-                    </div>
-                    <div class="pnl-stat">
-                        <span class="label">Trades</span>
-                        <span class="value" id="val-trades">--</span>
-                    </div>
-                    <div class="pnl-stat">
-                        <span class="label">Win Rate</span>
-                        <span class="value" id="val-win-rate">--</span>
-                    </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-x-0 top-20 bg-brand-surface border-b border-brand-border p-6 transform -translate-y-full opacity-0 pointer-events-none transition-all duration-300 md:hidden flex flex-col space-y-4">
+            <a href="#collection" onclick="toggleMobileMenu()" class="text-lg font-medium text-white hover:text-brand-gold">Collection</a>
+            <a href="#features" onclick="toggleMobileMenu()" class="text-lg font-medium text-white hover:text-brand-gold">Craftsmanship</a>
+            <a href="#showcase" onclick="toggleMobileMenu()" class="text-lg font-medium text-white hover:text-brand-gold">Editorial</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="text-lg font-medium text-white hover:text-brand-gold">Reviews</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="text-lg font-medium text-white hover:text-brand-gold">FAQ</a>
+            <div class="pt-4 border-t border-brand-border">
+                <a href="#collection" onclick="toggleMobileMenu()" class="w-full py-3 bg-white text-black font-semibold tracking-widest text-xs uppercase text-center rounded-full block">Shop Drop Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Ambient Background Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-gold/10 blur-[140px] rounded-full pointer-events-none animate-pulse-slow"></div>
+        <div class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-7 text-left" data-aos="fade-up" data-aos-duration="1000">
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-card border border-brand-border mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
+                    <span class="text-xs uppercase tracking-widest text-brand-gold font-medium">Autumn/Winter 2026 Collection</span>
                 </div>
-                
-                <h3 class="subsection-title">Open Positions</h3>
-                <div class="table-container">
-                    <table class="data-table" id="positions-table">
-                        <thead>
-                            <tr>
-                                <th>Symbol</th>
-                                <th>Entry Time</th>
-                                <th>Entry Price</th>
-                                <th>Qty</th>
-                                <th>Stop Loss</th>
-                                <th>Take Profit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td colspan="6" class="text-center">Loading...</td></tr>
-                        </tbody>
-                    </table>
+                <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6">
+                    Timeless Elegance, <span class="italic font-normal text-brand-gold">Redefined.</span>
+                </h1>
+                <p class="text-brand-muted text-base sm:text-lg max-w-xl font-normal leading-relaxed mb-8">
+                    Discover architectural silhouettes, ethically sourced cashmere, and immaculate tailoring crafted for the modern visionary. Zero compromise on style or sustainability.
+                </p>
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#collection" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-semibold text-sm tracking-widest uppercase rounded-full hover:bg-brand-gold transition-all duration-300 group shadow-lg shadow-white/5">
+                        Explore Collection
+                        <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#showcase" class="inline-flex items-center justify-center px-8 py-4 glass-panel text-white font-semibold text-sm tracking-widest uppercase rounded-full hover:border-brand-gold/50 transition-all duration-300">
+                        View Lookbook
+                    </a>
+                </div>
+
+                <!-- Micro Trust Badges -->
+                <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-brand-border/60 max-w-lg">
+                    <div>
+                        <p class="font-serif text-2xl font-bold text-white">100%</p>
+                        <p class="text-xs text-brand-muted uppercase tracking-wider mt-1">Ethical Cashmere</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl font-bold text-white">Carbon-Neutral</p>
+                        <p class="text-xs text-brand-muted uppercase tracking-wider mt-1">Global Shipping</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl font-bold text-white">4.9/5</p>
+                        <p class="text-xs text-brand-muted uppercase tracking-wider mt-1">Verified Ratings</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="section-title mt-4">
-                <h2>Live Watchlist</h2>
-            </div>
-            
-            <div class="grid" id="watchlist-grid">
-                <!-- Cards will be dynamically injected here -->
-                <div class="loading-state">Loading market data...</div>
-            </div>
-        </main>
-
-        <!-- Details Modal -->
-        <div class="modal-overlay" id="details-modal" style="display: none;">
-            <div class="modal-content glass-panel">
-                <div class="modal-header">
-                    <h2 id="modal-title">Symbol Details</h2>
-                    <button class="close-btn" id="close-modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="data-section">
-                        <h3>Recent Ticks (Top 10)</h3>
-                        <div class="table-container">
-                            <table class="data-table" id="ticks-table">
-                                <thead>
-                                    <tr>
-                                        <th>Time</th>
-                                        <th>Price</th>
-                                        <th>Volume</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Tick rows -->
-                                </tbody>
-                            </table>
+            <!-- Right Hero Visual Card with Glassmorphism Float -->
+            <div class="lg:col-span-5 relative" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                <div class="relative mx-auto max-w-md lg:max-w-none">
+                    <!-- Main Image Frame -->
+                    <div class="relative rounded-2xl overflow-hidden border border-brand-border shadow-2xl group aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1000" alt="High Fashion Editorial Model" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        
+                        <!-- Overlay Tag -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs tracking-widest uppercase text-brand-gold font-semibold">Featured Piece</p>
+                                <p class="font-serif text-xl text-white font-medium">The Sovereign Wool Trench</p>
+                            </div>
+                            <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white text-sm font-medium">$420</span>
                         </div>
                     </div>
-                    <div class="data-section mt-4">
-                        <h3>Recent 1m Candles (Top 10)</h3>
-                        <div class="table-container">
-                            <table class="data-table" id="candles-table">
-                                <thead>
-                                    <tr>
-                                        <th>Time</th>
-                                        <th>O</th>
-                                        <th>H</th>
-                                        <th>L</th>
-                                        <th>C</th>
-                                        <th>Vol</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Candle rows -->
-                                </tbody>
-                            </table>
+
+                    <!-- Floating Floating Interactive Badge -->
+                    <div class="absolute -top-6 -left-6 glass-panel p-4 rounded-2xl shadow-2xl animate-float hidden sm:flex items-center space-x-3 border border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-brand-muted">Limited Production</p>
+                            <p class="text-sm font-semibold text-white">Only 120 pcs worldwide</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
+    <!-- 3. SOCIAL PROOF LOGO BAR -->
+    <section class="py-12 border-y border-brand-border bg-brand-surface/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-xs uppercase tracking-[0.25em] text-brand-muted mb-8">Featured & Approved By Leading Fashion Publications</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+                <span class="font-serif text-xl tracking-widest text-white font-bold">VOGUE</span>
+                <span class="font-serif text-xl tracking-widest text-white font-bold">GQ</span>
+                <span class="font-serif text-xl tracking-widest text-white font-bold">HARPER'S BAZAAR</span>
+                <span class="font-serif text-xl tracking-widest text-white font-bold">ELLE</span>
+                <span class="font-serif text-xl tracking-widest text-white font-bold">VANITY FAIR</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CORE FEATURES / BRAND PILLARS -->
+    <section id="features" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Uncompromising Standards</p>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">The Aurelia Philosophy</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pillar 1 -->
+                <div class="glass-panel p-8 rounded-2xl hover:border-brand-gold/40 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-brand-gold mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="feather" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Architectural Draping</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        Every pattern is sculpted meticulously on live muses to ensure effortless fluid movement and structured modern form.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="glass-panel p-8 rounded-2xl hover:border-brand-gold/40 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-brand-gold mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="leaf" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Conscious Materials</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        Sourced exclusively from certified cruelty-free organic farms and regenerative mills guaranteeing zero toxic dyes.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="glass-panel p-8 rounded-2xl hover:border-brand-gold/40 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-brand-gold mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Heirloom Durability</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        Reinforced French seams and high-density weaves designed to withstand generational wear without losing structural integrity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PRODUCT SHOWCASE / BEST SELLERS -->
+    <section id="collection" class="py-24 bg-brand-surface/30 border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div data-aos="fade-right">
+                    <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Curated Selection</p>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Iconic Silhouettes</h2>
+                </div>
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0" data-aos="fade-left">
+                    <button class="px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full bg-white text-black transition-all">All</button>
+                    <button class="px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full glass-panel text-brand-muted hover:text-white transition-all">Outerwear</button>
+                    <button class="px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full glass-panel text-brand-muted hover:text-white transition-all">Knitwear</button>
+                    <button class="px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full glass-panel text-brand-muted hover:text-white transition-all">Essentials</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-brand-card border border-brand-border mb-4">
+                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800" alt="The Obsidian Silk Slip Dress" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <!-- Quick Add Button Overlay -->
+                        <div class="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openQuickBuy('The Obsidian Silk Slip Dress', '$280')" class="w-full py-3 bg-white/90 backdrop-blur-md text-black font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-white transition-colors shadow-lg">
+                                Quick View / Buy
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 px-3 py-1 bg-black/60 backdrop-blur-md text-[10px] tracking-widest uppercase text-brand-gold rounded-full border border-white/10">Bestseller</span>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-serif text-lg font-medium text-white group-hover:text-brand-gold transition-colors">The Obsidian Silk Slip Dress</h3>
+                            <p class="text-xs text-brand-muted mt-1 uppercase tracking-wider">Mulberry Silk • Onyx</p>
+                        </div>
+                        <span class="text-base font-semibold text-white">$280</span>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-brand-card border border-brand-border mb-4">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800" alt="Alpaca Wool Oversized Coat" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <!-- Quick Add Button Overlay -->
+                        <div class="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openQuickBuy('Alpaca Wool Oversized Coat', '$490')" class="w-full py-3 bg-white/90 backdrop-blur-md text-black font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-white transition-colors shadow-lg">
+                                Quick View / Buy
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 px-3 py-1 bg-brand-gold text-brand-dark text-[10px] tracking-widest uppercase font-bold rounded-full">New Drop</span>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-serif text-lg font-medium text-white group-hover:text-brand-gold transition-colors">Alpaca Wool Oversized Coat</h3>
+                            <p class="text-xs text-brand-muted mt-1 uppercase tracking-wider">Royal Alpaca • Camel</p>
+                        </div>
+                        <span class="text-base font-semibold text-white">$490</span>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-brand-card border border-brand-border mb-4">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800" alt="Ribbed Cashmere Turtleneck" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <!-- Quick Add Button Overlay -->
+                        <div class="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openQuickBuy('Ribbed Cashmere Turtleneck', '$320')" class="w-full py-3 bg-white/90 backdrop-blur-md text-black font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-white transition-colors shadow-lg">
+                                Quick View / Buy
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-serif text-lg font-medium text-white group-hover:text-brand-gold transition-colors">Ribbed Cashmere Turtleneck</h3>
+                            <p class="text-xs text-brand-muted mt-1 uppercase tracking-wider">Grade-A Cashmere • Ivory</p>
+                        </div>
+                        <span class="text-base font-semibold text-white">$320</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. BENEFITS / COMPARISON SECTION -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6" data-aos="fade-right">
+                    <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">The Aurelia Difference</p>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mb-6 leading-tight">Engineered for Longevity, Not Fast Trends.</h2>
+                    <p class="text-brand-muted text-base mb-8 leading-relaxed">
+                        Fast fashion relies on micro-seasons and synthetic blends that degrade in months. We build heirloom apparel designed to anchor your wardrobe for decades.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center space-x-3 text-white">
+                            <div class="w-6 h-6 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span>Zero synthetic microplastics — 100% natural organic fibers.</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-white">
+                            <div class="w-6 h-6 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span>Ethical atelier production with fair living wages and healthcare.</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-white">
+                            <div class="w-6 h-6 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span>Complimentary lifetime garment mending and care consulting.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-6" data-aos="fade-left">
+                    <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-brand-border relative">
+                        <h3 class="font-serif text-2xl font-bold text-white mb-6 text-center">Quality Breakdown</h3>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span class="text-white font-medium">Aurelia Tailored Garments</span>
+                                    <span class="text-brand-gold font-bold">100% Score</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-brand-card rounded-full overflow-hidden">
+                                    <div class="bg-brand-gold h-full rounded-full w-full"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span class="text-brand-muted">Traditional Luxury Brands</span>
+                                    <span class="text-brand-muted">75% Score</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-brand-card rounded-full overflow-hidden">
+                                    <div class="bg-brand-muted h-full rounded-full w-3/4"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span class="text-brand-muted">Fast Retail Fashion</span>
+                                    <span class="text-brand-muted">30% Score</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-brand-card rounded-full overflow-hidden">
+                                    <div class="bg-red-500/70 h-full rounded-full w-[30%]"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-brand-border text-center">
+                            <p class="text-xs text-brand-muted">Based on independent textile durability and ethical audit metrics (2026).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. EDITORIAL / VISUAL SHOWCASE -->
+    <section id="showcase" class="py-24 bg-brand-surface/50 border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Visual Journal</p>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">The Milan Editorial</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div class="md:col-span-8 rounded-2xl overflow-hidden relative group aspect-[16/10]" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=1200" alt="Editorial Fashion Shot 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-8">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-brand-gold">Volume 04</p>
+                            <h3 class="font-serif text-2xl text-white font-medium">Chasing Shadows in Milan</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4 rounded-2xl overflow-hidden relative group aspect-[4/5] md:aspect-auto" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800" alt="Editorial Fashion Shot 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-8">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-brand-gold">Knitwear Focus</p>
+                            <h3 class="font-serif text-xl text-white font-medium">Tactile Warmth</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. TESTIMONIALS / SOCIAL PROOF -->
+    <section id="testimonials" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Client Experiences</p>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Loved by Connoisseurs</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="flex text-brand-gold space-x-1 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                        </div>
+                        <p class="text-brand-sand text-sm leading-relaxed mb-6 font-normal">
+                            "The quality of the cashmere trench coat completely blew me away. It feels heavier, softer, and more structured than pieces I've purchased from legacy luxury houses at triple the price."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-brand-border">
+                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center font-serif font-bold text-brand-gold">
+                            VS
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Victoria Sinclair</p>
+                            <p class="text-xs text-brand-muted">Fashion Director, New York</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="flex text-brand-gold space-x-1 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                        </div>
+                        <p class="text-brand-sand text-sm leading-relaxed mb-6 font-normal">
+                            "Finding ethical clothing that doesn't compromise on sleek, minimalist aesthetics used to be impossible. Aurelia nails it. The packaging alone felt like opening a high-end gift."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-brand-border">
+                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center font-serif font-bold text-brand-gold">
+                            EL
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Elena Laurent</p>
+                            <p class="text-xs text-brand-muted">Architect & Designer, Paris</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="flex text-brand-gold space-x-1 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                        </div>
+                        <p class="text-brand-sand text-sm leading-relaxed mb-6 font-normal">
+                            "Immaculate tailoring. The obsidian slip dress fits like a glove. Customer support even helped me with custom sizing measurements prior to shipment. Exceptional service."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-brand-border">
+                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center font-serif font-bold text-brand-gold">
+                            MC
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Marcus Chen</p>
+                            <p class="text-xs text-brand-muted">Creative Consultant, London</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. PRICING / MEMBERSHIP PERKS SECTION -->
+    <section class="py-24 bg-brand-surface/40 border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">VIP Privilege</p>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">The Aurelia Circle</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Standard Client -->
+                <div class="glass-panel p-8 rounded-3xl border border-brand-border" data-aos="fade-up" data-aos-delay="100">
+                    <p class="text-xs uppercase tracking-widest text-brand-muted mb-2">Standard Access</p>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-4">Guest Shopper</h3>
+                    <p class="text-brand-muted text-sm mb-6">Standard online catalog access with carbon-neutral shipping.</p>
+                    <div class="text-3xl font-bold text-white mb-8">Free <span class="text-xs font-normal text-brand-muted">/ lifetime</span></div>
+                    <ul class="space-y-3 mb-8 text-sm text-brand-sand">
+                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>Standard catalog ordering</span></li>
+                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>30-day effortless returns</span></li>
+                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>Standard standard packaging</span></li>
+                    </ul>
+                    <a href="#collection" class="w-full py-3.5 glass-panel text-white font-semibold text-xs tracking-widest uppercase rounded-xl hover:border-brand-gold block text-center transition-all">Shop Now</a>
+                </div>
+
+                <!-- VIP Circle -->
+                <div class="bg-gradient-to-b from-brand-card to-brand-surface p-8 rounded-3xl border-2 border-brand-gold relative shadow-2xl shadow-brand-gold/5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute -top-3.5 right-8 bg-brand-gold text-brand-dark text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">Exclusive Access</div>
+                    <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">VIP Membership</p>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-4">The Inner Circle</h3>
+                    <p class="text-brand-muted text-sm mb-6">For collectors and enthusiasts wanting early private drop access.</p>
+                    <div class="text-3xl font-bold text-white mb-8">$150 <span class="text-xs font-normal text-brand-muted">/ annual credit back</span></div>
+                    <ul class="space-y-3 mb-8 text-sm text-white">
+                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>24-hour early access to seasonal drops</span></li>
+                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>Complimentary annual garment mending</span></li>
+                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>Private virtual or in-store styling session</span></li>
+                    </ul>
+                    <button onclick="alert('Welcome to waitlist for The Inner Circle!')" class="w-full py-3.5 bg-brand-gold text-brand-dark font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-white transition-all shadow-lg">Join Inner Circle</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. FAQ SECTION -->
+    <section id="faq" class="py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Got Questions?</p>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4" data-aos="fade-up">
+                <!-- FAQ Item 1 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-brand-border">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center text-white font-serif text-lg focus:outline-none">
+                        <span>How do your sizes run compared to standard luxury sizing?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-brand-muted text-sm leading-relaxed">
+                        <p class="pb-6">Our cuts are designed with modern architectural European tailoring. We recommend consulting our detailed dimensional sizing calculator on each product page or booking a quick virtual consultation with our stylists.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-brand-border">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center text-white font-serif text-lg focus:outline-none">
+                        <span>What is your return and exchange policy?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-brand-muted text-sm leading-relaxed">
+                        <p class="pb-6">We offer hassle-free 30-day returns and exchanges worldwide. Items must be unworn, unwashed, and in original packaging with tags attached. Return shipping labels are fully prepaid.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-brand-border">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center text-white font-serif text-lg focus:outline-none">
+                        <span>How is Aurelia certified sustainable?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-brand-muted text-sm leading-relaxed">
+                        <p class="pb-6">We source 100% GOTS-certified organic cotton, RMS-certified ethical wool, and OEKO-TEX certified dyes. Every partner atelier undergoes annual third-party social and environmental audits.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-brand-border">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center text-white font-serif text-lg focus:outline-none">
+                        <span>How should I care for my cashmere and silk garments?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-brand-muted text-sm leading-relaxed">
+                        <p class="pb-6">We recommend hand washing in cold water with organic wool/silk detergent or professional eco-dry cleaning. Each garment comes with a specialized cedar storage pouch to protect against elements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. FINAL CONVERSION CTA SECTION -->
+    <section class="py-24 relative overflow-hidden bg-brand-surface/80 border-t border-brand-border">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-gold/10 via-transparent to-transparent pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="zoom-in">
+            <span class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3 block">Limited Inventory Drop</span>
+            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white mb-6">Elevate Your Wardrobe Today.</h2>
+            <p class="text-brand-muted text-base max-w-xl mx-auto mb-10 leading-relaxed">
+                Join thousands of conscious fashion leaders worldwide. Experience immaculate craftsmanship delivered directly to your doorstep.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#collection" class="w-full sm:w-auto px-10 py-4 bg-white text-black font-semibold text-sm tracking-widest uppercase rounded-full hover:bg-brand-gold transition-all duration-300 shadow-xl shadow-white/5">
+                    Shop The Collection
+                </a>
+                <a href="#collection" class="w-full sm:w-auto px-10 py-4 glass-panel text-white font-semibold text-sm tracking-widest uppercase rounded-full hover:border-brand-gold transition-all duration-300">
+                    Explore Lookbook
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. FOOTER -->
+    <footer class="bg-brand-dark border-t border-brand-border pt-16 pb-12 text-brand-muted text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-brand-border">
+            <!-- Col 1: Brand Info -->
+            <div class="md:col-span-4 space-y-4">
+                <a href="#" class="font-serif text-2xl tracking-[0.2em] font-bold text-white">AURELIA</a>
+                <p class="text-xs leading-relaxed max-w-xs">
+                    Modern minimalist luxury crafted for timeless elegance and zero-compromise environmental sustainability.
+                </p>
+                <div class="flex space-x-4 pt-2">
+                    <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-white hover:text-brand-gold transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="#" aria-label="Twitter" class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-white hover:text-brand-gold transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-white hover:text-brand-gold transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2: Quick Links -->
+            <div class="md:col-span-2 space-y-3">
+                <p class="text-xs uppercase tracking-widest text-white font-semibold mb-4">Shop</p>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#collection" class="hover:text-white transition-colors">Outerwear</a></li>
+                    <li><a href="#collection" class="hover:text-white transition-colors">Knitwear</a></li>
+                    <li><a href="#collection" class="hover:text-white transition-colors">Silk Essentials</a></li>
+                    <li><a href="#collection" class="hover:text-white transition-colors">Accessories</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Company -->
+            <div class="md:col-span-2 space-y-3">
+                <p class="text-xs uppercase tracking-widest text-white font-semibold mb-4">Company</p>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#features" class="hover:text-white transition-colors">Philosophy</a></li>
+                    <li><a href="#showcase" class="hover:text-white transition-colors">Sustainability</a></li>
+                    <li><a href="#testimonials" class="hover:text-white transition-colors">Press & Media</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Newsletter Signup -->
+            <div class="md:col-span-4 space-y-4">
+                <p class="text-xs uppercase tracking-widest text-white font-semibold">Join The Journal</p>
+                <p class="text-xs">Receive private invites to seasonal drops and 10% off your first order.</p>
+                <form onsubmit="event.preventDefault(); alert('Thank you for subscribing to Aurelia Journal!');" class="flex items-center space-x-2">
+                    <input type="email" placeholder="Enter your email" required class="bg-brand-surface border border-brand-border rounded-xl px-4 py-3 text-xs text-white placeholder-brand-muted focus:outline-none focus:border-brand-gold flex-1">
+                    <button type="submit" class="px-5 py-3 bg-white text-black text-xs font-semibold uppercase tracking-widest rounded-xl hover:bg-brand-gold transition-colors">Join</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-brand-muted">
+            <p>&copy; 2026 AURELIA Studio Inc. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 sm:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OVER CART DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none">
+        <div id="cart-backdrop" onclick="toggleCart()" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="cart-panel" class="absolute inset-y-0 right-0 max-w-full flex pl-10 transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="w-screen max-w-md bg-brand-surface border-l border-brand-border p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-brand-border">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-gold"></i>
+                            <h2 class="font-serif text-lg font-bold text-white">Your Shopping Bag (2)</h2>
+                        </div>
+                        <button onclick="toggleCart()" class="text-brand-muted hover:text-white p-2">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cart Items List -->
+                    <div class="py-6 space-y-4 overflow-y-auto max-h-[60vh]">
+                        <div class="flex space-x-4 items-center bg-brand-card p-3 rounded-xl border border-brand-border">
+                            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=200" alt="Item" class="w-16 h-20 object-cover rounded-lg">
+                            <div class="flex-1">
+                                <h4 class="text-sm font-semibold text-white font-serif">The Obsidian Silk Slip Dress</h4>
+                                <p class="text-xs text-brand-muted mt-0.5">Size: M • Onyx</p>
+                                <p class="text-xs font-semibold text-white mt-2">$280</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4 items-center bg-brand-card p-3 rounded-xl border border-brand-border">
+                            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=200" alt="Item" class="w-16 h-20 object-cover rounded-lg">
+                            <div class="flex-1">
+                                <h4 class="text-sm font-semibold text-white font-serif">Ribbed Cashmere Turtleneck</h4>
+                                <p class="text-xs text-brand-muted mt-0.5">Size: S • Ivory</p>
+                                <p class="text-xs font-semibold text-white mt-2">$320</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Footer Subtotal & Checkout -->
+                <div class="pt-6 border-t border-brand-border space-y-4">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-brand-muted">Subtotal</span>
+                        <span class="text-white font-bold">$600.00</span>
+                    </div>
+                    <p class="text-[11px] text-brand-gold">✓ You qualify for complimentary express carbon-neutral shipping.</p>
+                    <button onclick="alert('Proceeding to secure checkout...'); toggleCart();" class="w-full py-4 bg-white text-black font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-brand-gold transition-all shadow-lg text-center block">
+                        Proceed to Secure Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="/js/api.js"></script>
-    <script src="/js/websocket.js"></script>
-    <script src="/js/app.js"></script>
+    <!-- QUICK BUY MODAL -->
+    <div id="quick-buy-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div onclick="closeQuickBuy()" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+        <div class="glass-panel max-w-lg w-full p-8 rounded-3xl relative z-10 border border-brand-border transform scale-95 transition-transform duration-300" id="quick-buy-content">
+            <button onclick="closeQuickBuy()" class="absolute top-6 right-6 text-brand-muted hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex space-x-6 items-center mb-6">
+                <img id="modal-img" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=300" alt="Product" class="w-24 h-32 object-cover rounded-xl border border-brand-border">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-brand-gold font-semibold">Instant Order</span>
+                    <h3 id="modal-title" class="font-serif text-xl font-bold text-white mt-1">The Obsidian Silk Slip Dress</h3>
+                    <p id="modal-price" class="text-lg font-semibold text-white mt-2">$280</p>
+                </div>
+            </div>
+            
+            <div class="space-y-4 mb-6">
+                <div>
+                    <label class="text-xs uppercase tracking-wider text-brand-muted block mb-2">Select Size</label>
+                    <div class="grid grid-cols-4 gap-2">
+                        <button class="py-2.5 rounded-xl border border-brand-border text-xs font-semibold text-white hover:border-brand-gold transition-all">XS</button>
+                        <button class="py-2.5 rounded-xl border border-brand-gold bg-brand-gold/10 text-xs font-semibold text-brand-gold">S</button>
+                        <button class="py-2.5 rounded-xl border border-brand-border text-xs font-semibold text-white hover:border-brand-gold transition-all">M</button>
+                        <button class="py-2.5 rounded-xl border border-brand-border text-xs font-semibold text-white hover:border-brand-gold transition-all">L</button>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="alert('Item added successfully to your shopping bag!'); closeQuickBuy(); toggleCart();" class="w-full py-4 bg-white text-black font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-brand-gold transition-all shadow-lg text-center">
+                Add to Bag & Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts: Lucide Icons Initialization & AOS Animation Runner -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic'
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Glass effect enhancement
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 40) {
+                navbar.classList.add('shadow-xl', 'bg-brand-dark/95');
+            } else {
+                navbar.classList.remove('shadow-xl', 'bg-brand-dark/95');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('-translate-y-full')) {
+                menu.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+                menu.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+            } else {
+                menu.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+                menu.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+            }
+        }
+
+        // Slide-over Cart Toggle
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const backdrop = document.getElementById('cart-backdrop');
+            const panel = document.getElementById('cart-panel');
+
+            if (drawer.classList.contains('pointer-events-none')) {
+                drawer.classList.remove('pointer-events-none');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                panel.classList.remove('translate-x-full');
+            } else {
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                panel.classList.add('translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('pointer-events-none');
+                }, 300);
+            }
+        }
+
+        // Quick Buy Modal Open/Close
+        function openQuickBuy(title, price) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-price').innerText = price;
+            const modal = document.getElementById('quick-buy-modal');
+            const content = document.getElementById('quick-buy-content');
+            
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+
+        function closeQuickBuy() {
+            const modal = document.getElementById('quick-buy-modal');
+            const content = document.getElementById('quick-buy-content');
+            
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('[data-lucide="chevron-down"]');
+            
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
 </body>
 </html>
