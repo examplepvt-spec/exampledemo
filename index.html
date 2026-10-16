@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURELIA — Modern Minimalist Luxury & Sustainable Fashion</title>
+    <title>EXAMPLE CLOTHINGS — Essential Men's Tailoring & Minimalist Wear</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,18 +13,18 @@
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#0A0A0A',
-                            surface: '#121212',
-                            card: '#1A1A1A',
+                            dark: '#0B0B0B',
+                            surface: '#141414',
+                            card: '#1B1B1B',
                             border: '#2A2A2A',
-                            gold: '#D4AF37',
-                            sand: '#EFECE6',
-                            muted: '#888888'
+                            accent: '#C5A880', /* Clean refined warm zinc/taupe accent */
+                            sand: '#F2F2F0',
+                            muted: '#999999'
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif']
+                        serif: ['Inter', 'sans-serif'] /* Clean modern men's aesthetic uses crisp sans-serif throughout */
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -33,7 +33,7 @@
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
+                            '50%': { transform: 'translateY(-8px)' },
                         }
                     }
                 }
@@ -44,7 +44,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -53,54 +53,53 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* Custom smooth scrollbar & selection */
         ::selection {
-            background: #D4AF37;
-            color: #0A0A0A;
+            background: #C5A880;
+            color: #0B0B0B;
         }
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #0A0A0A;
+            background: #0B0B0B;
         }
         ::-webkit-scrollbar-thumb {
             background: #2A2A2A;
-            border-radius: 4px;
+            border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #D4AF37;
+            background: #C5A880;
         }
         .glass-panel {
-            background: rgba(26, 26, 26, 0.6);
+            background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
         .glass-nav {
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(11, 11, 11, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
-<body class="bg-brand-dark text-brand-sand font-sans antialiased overflow-x-hidden selection:bg-brand-gold selection:text-black">
+<body class="bg-brand-dark text-brand-sand font-sans antialiased overflow-x-hidden">
 
     <!-- 1. STICKY NAVBAR -->
     <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="#" class="font-serif text-2xl tracking-[0.2em] font-bold text-white hover:text-brand-gold transition-colors">
-                AURELIA
+            <a href="#" class="text-sm tracking-[0.25em] font-bold text-white uppercase hover:text-brand-accent transition-colors">
+                EXAMPLE CLOTHINGS
             </a>
 
             <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider text-brand-muted">
-                <a href="#collection" class="hover:text-white transition-colors">COLLECTION</a>
-                <a href="#features" class="hover:text-white transition-colors">CRAFT</a>
-                <a href="#showcase" class="hover:text-white transition-colors">EDITORIAL</a>
-                <a href="#testimonials" class="hover:text-white transition-colors">REVIEWS</a>
+            <nav class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-widest text-brand-muted uppercase">
+                <a href="#collection" class="hover:text-white transition-colors">Shop</a>
+                <a href="#features" class="hover:text-white transition-colors">Craft</a>
+                <a href="#showcase" class="hover:text-white transition-colors">Lookbook</a>
+                <a href="#testimonials" class="hover:text-white transition-colors">Reviews</a>
                 <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
             </nav>
 
@@ -109,16 +108,12 @@
                 <button aria-label="Search" class="text-brand-muted hover:text-white transition-colors p-2">
                     <i data-lucide="search" class="w-5 h-5"></i>
                 </button>
-                <button aria-label="Wishlist" class="hidden sm:block text-brand-muted hover:text-white transition-colors p-2 relative">
-                    <i data-lucide="heart" class="w-5 h-5"></i>
-                    <span class="absolute top-1 right-1 w-2 h-2 bg-brand-gold rounded-full"></span>
-                </button>
                 <button onclick="toggleCart()" aria-label="Cart" class="text-brand-muted hover:text-white transition-colors p-2 relative group">
                     <i data-lucide="shopping-bag" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                    <span class="absolute -top-1 -right-1 bg-brand-gold text-brand-dark text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+                    <span class="absolute top-1 right-1 bg-brand-accent text-brand-dark text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">1</span>
                 </button>
-                <a href="#collection" class="hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold tracking-widest uppercase bg-white text-black hover:bg-brand-gold transition-all duration-300 rounded-full">
-                    Shop Drop
+                <a href="#collection" class="hidden lg:inline-flex items-center justify-center px-5 py-2 text-xs font-semibold tracking-widest uppercase bg-white text-black hover:bg-brand-accent transition-all duration-300 rounded-none">
+                    New Arrivals
                 </a>
                 <!-- Mobile Menu Toggle -->
                 <button onclick="toggleMobileMenu()" aria-label="Menu" class="md:hidden text-white p-2">
@@ -129,13 +124,13 @@
 
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="fixed inset-x-0 top-20 bg-brand-surface border-b border-brand-border p-6 transform -translate-y-full opacity-0 pointer-events-none transition-all duration-300 md:hidden flex flex-col space-y-4">
-            <a href="#collection" onclick="toggleMobileMenu()" class="text-lg font-medium text-white hover:text-brand-gold">Collection</a>
-            <a href="#features" onclick="toggleMobileMenu()" class="text-lg font-medium text-white hover:text-brand-gold">Craftsmanship</a>
-            <a href="#showcase" onclick="toggleMobileMenu()" class="text-lg font-medium text-white hover:text-brand-gold">Editorial</a>
-            <a href="#testimonials" onclick="toggleMobileMenu()" class="text-lg font-medium text-white hover:text-brand-gold">Reviews</a>
-            <a href="#faq" onclick="toggleMobileMenu()" class="text-lg font-medium text-white hover:text-brand-gold">FAQ</a>
+            <a href="#collection" onclick="toggleMobileMenu()" class="text-sm font-medium tracking-wider uppercase text-white hover:text-brand-accent">Shop</a>
+            <a href="#features" onclick="toggleMobileMenu()" class="text-sm font-medium tracking-wider uppercase text-white hover:text-brand-accent">Craft</a>
+            <a href="#showcase" onclick="toggleMobileMenu()" class="text-sm font-medium tracking-wider uppercase text-white hover:text-brand-accent">Lookbook</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="text-sm font-medium tracking-wider uppercase text-white hover:text-brand-accent">Reviews</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="text-sm font-medium tracking-wider uppercase text-white hover:text-brand-accent">FAQ</a>
             <div class="pt-4 border-t border-brand-border">
-                <a href="#collection" onclick="toggleMobileMenu()" class="w-full py-3 bg-white text-black font-semibold tracking-widest text-xs uppercase text-center rounded-full block">Shop Drop Now</a>
+                <a href="#collection" onclick="toggleMobileMenu()" class="w-full py-3 bg-white text-black font-semibold tracking-widest text-xs uppercase text-center block">Explore Drop</a>
             </div>
         </div>
     </header>
@@ -143,75 +138,61 @@
     <!-- 2. HERO SECTION -->
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <!-- Ambient Background Glows -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-gold/10 blur-[140px] rounded-full pointer-events-none animate-pulse-slow"></div>
-        <div class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-accent/5 blur-[150px] rounded-full pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <!-- Left Hero Content -->
             <div class="lg:col-span-7 text-left" data-aos="fade-up" data-aos-duration="1000">
-                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-card border border-brand-border mb-6">
-                    <span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
-                    <span class="text-xs uppercase tracking-widest text-brand-gold font-medium">Autumn/Winter 2026 Collection</span>
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-none bg-brand-card border border-brand-border mb-6">
+                    <span class="w-1.5 h-1.5 bg-brand-accent"></span>
+                    <span class="text-[11px] uppercase tracking-widest text-brand-accent font-medium">Permanent Collection Drop 04</span>
                 </div>
-                <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6">
-                    Timeless Elegance, <span class="italic font-normal text-brand-gold">Redefined.</span>
+                <h1 class="text-4xl sm:text-6xl lg:text-6xl font-semibold tracking-tight text-white leading-[1.1] mb-6">
+                    Precision engineering <br><span class="text-brand-muted">for everyday wear.</span>
                 </h1>
-                <p class="text-brand-muted text-base sm:text-lg max-w-xl font-normal leading-relaxed mb-8">
-                    Discover architectural silhouettes, ethically sourced cashmere, and immaculate tailoring crafted for the modern visionary. Zero compromise on style or sustainability.
+                <p class="text-brand-muted text-sm sm:text-base max-w-lg font-normal leading-relaxed mb-8">
+                    Purpose-built menswear focused on heavy-weight fabrics, sharp architectural lines, and absolute versatility. Zero clutter. Pure essentials.
                 </p>
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#collection" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-semibold text-sm tracking-widest uppercase rounded-full hover:bg-brand-gold transition-all duration-300 group shadow-lg shadow-white/5">
-                        Explore Collection
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <a href="#collection" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-semibold text-xs tracking-widest uppercase hover:bg-brand-accent transition-all duration-300 group">
+                        Shop Collection
                         <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
                     </a>
-                    <a href="#showcase" class="inline-flex items-center justify-center px-8 py-4 glass-panel text-white font-semibold text-sm tracking-widest uppercase rounded-full hover:border-brand-gold/50 transition-all duration-300">
-                        View Lookbook
+                    <a href="#features" class="inline-flex items-center justify-center px-8 py-4 glass-panel text-white font-semibold text-xs tracking-widest uppercase hover:border-white/30 transition-all duration-300">
+                        Our Approach
                     </a>
                 </div>
 
                 <!-- Micro Trust Badges -->
-                <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-brand-border/60 max-w-lg">
+                <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-brand-border/60 max-w-md">
                     <div>
-                        <p class="font-serif text-2xl font-bold text-white">100%</p>
-                        <p class="text-xs text-brand-muted uppercase tracking-wider mt-1">Ethical Cashmere</p>
+                        <p class="text-xl font-bold text-white">450 GSM</p>
+                        <p class="text-[11px] text-brand-muted uppercase tracking-wider mt-0.5">Heavyweight Cotton</p>
                     </div>
                     <div>
-                        <p class="font-serif text-2xl font-bold text-white">Carbon-Neutral</p>
-                        <p class="text-xs text-brand-muted uppercase tracking-wider mt-1">Global Shipping</p>
+                        <p class="text-xl font-bold text-white">Ethical</p>
+                        <p class="text-[11px] text-brand-muted uppercase tracking-wider mt-0.5">Portuguese Atelier</p>
                     </div>
                     <div>
-                        <p class="font-serif text-2xl font-bold text-white">4.9/5</p>
-                        <p class="text-xs text-brand-muted uppercase tracking-wider mt-1">Verified Ratings</p>
+                        <p class="text-xl font-bold text-white">4.9/5</p>
+                        <p class="text-[11px] text-brand-muted uppercase tracking-wider mt-0.5">Verified Fit</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Hero Visual Card with Glassmorphism Float -->
+            <!-- Right Hero Visual Card -->
             <div class="lg:col-span-5 relative" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
                 <div class="relative mx-auto max-w-md lg:max-w-none">
-                    <!-- Main Image Frame -->
-                    <div class="relative rounded-2xl overflow-hidden border border-brand-border shadow-2xl group aspect-[4/5]">
-                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1000" alt="High Fashion Editorial Model" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="relative rounded-none overflow-hidden border border-brand-border shadow-2xl group aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&q=80&w=1000" alt="Minimalist Men's Streetwear Outfit" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                         
-                        <!-- Overlay Tag -->
                         <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between">
                             <div>
-                                <p class="text-xs tracking-widest uppercase text-brand-gold font-semibold">Featured Piece</p>
-                                <p class="font-serif text-xl text-white font-medium">The Sovereign Wool Trench</p>
+                                <p class="text-[10px] tracking-widest uppercase text-brand-accent font-semibold">Signature Heavyweight</p>
+                                <p class="text-lg text-white font-medium">The Structured Boxy Hoodie</p>
                             </div>
-                            <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white text-sm font-medium">$420</span>
-                        </div>
-                    </div>
-
-                    <!-- Floating Floating Interactive Badge -->
-                    <div class="absolute -top-6 -left-6 glass-panel p-4 rounded-2xl shadow-2xl animate-float hidden sm:flex items-center space-x-3 border border-white/10">
-                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold">
-                            <i data-lucide="sparkles" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs text-brand-muted">Limited Production</p>
-                            <p class="text-sm font-semibold text-white">Only 120 pcs worldwide</p>
+                            <span class="px-3 py-1 bg-black/80 border border-white/10 text-white text-xs font-medium">$165</span>
                         </div>
                     </div>
                 </div>
@@ -220,15 +201,13 @@
     </section>
 
     <!-- 3. SOCIAL PROOF LOGO BAR -->
-    <section class="py-12 border-y border-brand-border bg-brand-surface/50">
+    <section class="py-10 border-y border-brand-border bg-brand-surface/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p class="text-center text-xs uppercase tracking-[0.25em] text-brand-muted mb-8">Featured & Approved By Leading Fashion Publications</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
-                <span class="font-serif text-xl tracking-widest text-white font-bold">VOGUE</span>
-                <span class="font-serif text-xl tracking-widest text-white font-bold">GQ</span>
-                <span class="font-serif text-xl tracking-widest text-white font-bold">HARPER'S BAZAAR</span>
-                <span class="font-serif text-xl tracking-widest text-white font-bold">ELLE</span>
-                <span class="font-serif text-xl tracking-widest text-white font-bold">VANITY FAIR</span>
+            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-40 grayscale hover:grayscale-0 transition-all duration-300">
+                <span class="text-sm tracking-[0.2em] text-white font-bold uppercase">GQ MAN</span>
+                <span class="text-sm tracking-[0.2em] text-white font-bold uppercase">HYPEBEAST</span>
+                <span class="text-sm tracking-[0.2em] text-white font-bold uppercase">COMPLEX</span>
+                <span class="text-sm tracking-[0.2em] text-white font-bold uppercase">MONOCLE</span>
             </div>
         </div>
     </section>
@@ -236,62 +215,62 @@
     <!-- 4. CORE FEATURES / BRAND PILLARS -->
     <section id="features" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-                <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Uncompromising Standards</p>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">The Aurelia Philosophy</h2>
+            <div class="text-center max-w-xl mx-auto mb-16" data-aos="fade-up">
+                <p class="text-[11px] uppercase tracking-[0.25em] text-brand-accent font-semibold mb-3">Built Without Compromise</p>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-white">The Standard for Men's Essentials</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Pillar 1 -->
-                <div class="glass-panel p-8 rounded-2xl hover:border-brand-gold/40 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-brand-gold mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="feather" class="w-6 h-6"></i>
+                <div class="glass-panel p-8 rounded-none border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-10 h-10 rounded-none bg-brand-card border border-brand-border flex items-center justify-center text-brand-accent mb-6">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-3">Architectural Draping</h3>
-                    <p class="text-brand-muted text-sm leading-relaxed">
-                        Every pattern is sculpted meticulously on live muses to ensure effortless fluid movement and structured modern form.
+                    <h3 class="text-base font-semibold text-white mb-2 uppercase tracking-wide">Heavyweight Textures</h3>
+                    <p class="text-brand-muted text-xs leading-relaxed">
+                        Custom-milled 450+ GSM French terry and heavy cotton twills engineered to hold a pristine architectural silhouette.
                     </p>
                 </div>
 
                 <!-- Pillar 2 -->
-                <div class="glass-panel p-8 rounded-2xl hover:border-brand-gold/40 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-brand-gold mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="leaf" class="w-6 h-6"></i>
+                <div class="glass-panel p-8 rounded-none border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-10 h-10 rounded-none bg-brand-card border border-brand-border flex items-center justify-center text-brand-accent mb-6">
+                        <i data-lucide="scissors" class="w-5 h-5"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-3">Conscious Materials</h3>
-                    <p class="text-brand-muted text-sm leading-relaxed">
-                        Sourced exclusively from certified cruelty-free organic farms and regenerative mills guaranteeing zero toxic dyes.
+                    <h3 class="text-base font-semibold text-white mb-2 uppercase tracking-wide">Relaxed Tailoring</h3>
+                    <p class="text-brand-muted text-xs leading-relaxed">
+                        Thoughtful boxy drapes and clean minimalist lines designed to layer seamlessly through seasons.
                     </p>
                 </div>
 
                 <!-- Pillar 3 -->
-                <div class="glass-panel p-8 rounded-2xl hover:border-brand-gold/40 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-brand-gold mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                <div class="glass-panel p-8 rounded-none border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-10 h-10 rounded-none bg-brand-card border border-brand-border flex items-center justify-center text-brand-accent mb-6">
+                        <i data-lucide="shield" class="w-5 h-5"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-3">Heirloom Durability</h3>
-                    <p class="text-brand-muted text-sm leading-relaxed">
-                        Reinforced French seams and high-density weaves designed to withstand generational wear without losing structural integrity.
+                    <h3 class="text-base font-semibold text-white mb-2 uppercase tracking-wide">Built to Last</h3>
+                    <p class="text-brand-muted text-xs leading-relaxed">
+                        Pre-shrunk garments washed with organic enzymes to eliminate shrinkage and guarantee generational durability.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. PRODUCT SHOWCASE / BEST SELLERS -->
+    <!-- 5. PRODUCT SHOWCASE -->
     <section id="collection" class="py-24 bg-brand-surface/30 border-t border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
                 <div data-aos="fade-right">
-                    <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Curated Selection</p>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Iconic Silhouettes</h2>
+                    <p class="text-[11px] uppercase tracking-[0.25em] text-brand-accent font-semibold mb-3">Core Catalog</p>
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-white">Engineered Garments</h2>
                 </div>
                 <!-- Filter Tabs -->
-                <div class="flex flex-wrap gap-2 mt-6 md:mt-0" data-aos="fade-left">
-                    <button class="px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full bg-white text-black transition-all">All</button>
-                    <button class="px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full glass-panel text-brand-muted hover:text-white transition-all">Outerwear</button>
-                    <button class="px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full glass-panel text-brand-muted hover:text-white transition-all">Knitwear</button>
-                    <button class="px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full glass-panel text-brand-muted hover:text-white transition-all">Essentials</button>
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0 text-xs" data-aos="fade-left">
+                    <button class="px-4 py-2 uppercase tracking-wider font-semibold bg-white text-black transition-all">All</button>
+                    <button class="px-4 py-2 uppercase tracking-wider font-semibold glass-panel text-brand-muted hover:text-white transition-all">Outerwear</button>
+                    <button class="px-4 py-2 uppercase tracking-wider font-semibold glass-panel text-brand-muted hover:text-white transition-all">Hoodies & Tees</button>
+                    <button class="px-4 py-2 uppercase tracking-wider font-semibold glass-panel text-brand-muted hover:text-white transition-all">Pants</button>
                 </div>
             </div>
 
@@ -299,170 +278,91 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Item 1 -->
                 <div class="group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-brand-card border border-brand-border mb-4">
-                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800" alt="The Obsidian Silk Slip Dress" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-                        <!-- Quick Add Button Overlay -->
-                        <div class="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <button onclick="openQuickBuy('The Obsidian Silk Slip Dress', '$280')" class="w-full py-3 bg-white/90 backdrop-blur-md text-black font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-white transition-colors shadow-lg">
-                                Quick View / Buy
+                    <div class="relative rounded-none overflow-hidden aspect-[3/4] bg-brand-card border border-brand-border mb-4">
+                        <img src="https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&q=80&w=800" alt="Heavyweight Boxy Hoodie" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openQuickBuy('The Heavyweight Boxy Hoodie', '$165')" class="w-full py-3 bg-white text-black font-semibold text-[11px] tracking-widest uppercase hover:bg-brand-accent transition-colors">
+                                Quick Add
                             </button>
                         </div>
-                        <span class="absolute top-4 left-4 px-3 py-1 bg-black/60 backdrop-blur-md text-[10px] tracking-widest uppercase text-brand-gold rounded-full border border-white/10">Bestseller</span>
+                        <span class="absolute top-3 left-3 px-2.5 py-1 bg-black/70 backdrop-blur-md text-[10px] tracking-widest uppercase text-brand-accent border border-white/10">Bestseller</span>
                     </div>
                     <div class="flex justify-between items-start">
                         <div>
-                            <h3 class="font-serif text-lg font-medium text-white group-hover:text-brand-gold transition-colors">The Obsidian Silk Slip Dress</h3>
-                            <p class="text-xs text-brand-muted mt-1 uppercase tracking-wider">Mulberry Silk • Onyx</p>
+                            <h3 class="text-sm font-medium text-white group-hover:text-brand-accent transition-colors">The Heavyweight Boxy Hoodie</h3>
+                            <p class="text-[11px] text-brand-muted mt-0.5 uppercase tracking-wider">450 GSM Cotton • Washed Black</p>
                         </div>
-                        <span class="text-base font-semibold text-white">$280</span>
+                        <span class="text-sm font-semibold text-white">$165</span>
                     </div>
                 </div>
 
                 <!-- Item 2 -->
                 <div class="group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-brand-card border border-brand-border mb-4">
-                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800" alt="Alpaca Wool Oversized Coat" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-                        <!-- Quick Add Button Overlay -->
-                        <div class="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <button onclick="openQuickBuy('Alpaca Wool Oversized Coat', '$490')" class="w-full py-3 bg-white/90 backdrop-blur-md text-black font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-white transition-colors shadow-lg">
-                                Quick View / Buy
+                    <div class="relative rounded-none overflow-hidden aspect-[3/4] bg-brand-card border border-brand-border mb-4">
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=800" alt="Relaxed Heavy Tee" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openQuickBuy('Relaxed Heavyweight Tee', '$65')" class="w-full py-3 bg-white text-black font-semibold text-[11px] tracking-widest uppercase hover:bg-brand-accent transition-colors">
+                                Quick Add
                             </button>
                         </div>
-                        <span class="absolute top-4 left-4 px-3 py-1 bg-brand-gold text-brand-dark text-[10px] tracking-widest uppercase font-bold rounded-full">New Drop</span>
                     </div>
                     <div class="flex justify-between items-start">
                         <div>
-                            <h3 class="font-serif text-lg font-medium text-white group-hover:text-brand-gold transition-colors">Alpaca Wool Oversized Coat</h3>
-                            <p class="text-xs text-brand-muted mt-1 uppercase tracking-wider">Royal Alpaca • Camel</p>
+                            <h3 class="text-sm font-medium text-white group-hover:text-brand-accent transition-colors">Relaxed Heavyweight Tee</h3>
+                            <p class="text-[11px] text-brand-muted mt-0.5 uppercase tracking-wider">Combed Cotton • Off-White</p>
                         </div>
-                        <span class="text-base font-semibold text-white">$490</span>
+                        <span class="text-sm font-semibold text-white">$65</span>
                     </div>
                 </div>
 
                 <!-- Item 3 -->
                 <div class="group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-brand-card border border-brand-border mb-4">
-                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800" alt="Ribbed Cashmere Turtleneck" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-                        <!-- Quick Add Button Overlay -->
-                        <div class="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <button onclick="openQuickBuy('Ribbed Cashmere Turtleneck', '$320')" class="w-full py-3 bg-white/90 backdrop-blur-md text-black font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-white transition-colors shadow-lg">
-                                Quick View / Buy
+                    <div class="relative rounded-none overflow-hidden aspect-[3/4] bg-brand-card border border-brand-border mb-4">
+                        <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&q=80&w=800" alt="Pleated Wide-Leg Trousers" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openQuickBuy('Pleated Wide-Leg Trousers', '$195')" class="w-full py-3 bg-white text-black font-semibold text-[11px] tracking-widest uppercase hover:bg-brand-accent transition-colors">
+                                Quick Add
                             </button>
                         </div>
+                        <span class="absolute top-3 left-3 px-2.5 py-1 bg-brand-accent text-brand-dark text-[10px] tracking-widest uppercase font-bold">Limited</span>
                     </div>
                     <div class="flex justify-between items-start">
                         <div>
-                            <h3 class="font-serif text-lg font-medium text-white group-hover:text-brand-gold transition-colors">Ribbed Cashmere Turtleneck</h3>
-                            <p class="text-xs text-brand-muted mt-1 uppercase tracking-wider">Grade-A Cashmere • Ivory</p>
+                            <h3 class="text-sm font-medium text-white group-hover:text-brand-accent transition-colors">Pleated Wide-Leg Trousers</h3>
+                            <p class="text-[11px] text-brand-muted mt-0.5 uppercase tracking-wider">Wool-Blend • Charcoal</p>
                         </div>
-                        <span class="text-base font-semibold text-white">$320</span>
+                        <span class="text-sm font-semibold text-white">$195</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. BENEFITS / COMPARISON SECTION -->
-    <section class="py-24 relative overflow-hidden">
+    <!-- 6. EDITORIAL LOOKBOOK -->
+    <section id="showcase" class="py-24 bg-brand-surface/50 border-t border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-6" data-aos="fade-right">
-                    <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">The Aurelia Difference</p>
-                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mb-6 leading-tight">Engineered for Longevity, Not Fast Trends.</h2>
-                    <p class="text-brand-muted text-base mb-8 leading-relaxed">
-                        Fast fashion relies on micro-seasons and synthetic blends that degrade in months. We build heirloom apparel designed to anchor your wardrobe for decades.
-                    </p>
-                    
-                    <ul class="space-y-4">
-                        <li class="flex items-center space-x-3 text-white">
-                            <div class="w-6 h-6 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                            <span>Zero synthetic microplastics — 100% natural organic fibers.</span>
-                        </li>
-                        <li class="flex items-center space-x-3 text-white">
-                            <div class="w-6 h-6 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                            <span>Ethical atelier production with fair living wages and healthcare.</span>
-                        </li>
-                        <li class="flex items-center space-x-3 text-white">
-                            <div class="w-6 h-6 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                            <span>Complimentary lifetime garment mending and care consulting.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="lg:col-span-6" data-aos="fade-left">
-                    <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-brand-border relative">
-                        <h3 class="font-serif text-2xl font-bold text-white mb-6 text-center">Quality Breakdown</h3>
-                        
-                        <div class="space-y-6">
-                            <div>
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span class="text-white font-medium">Aurelia Tailored Garments</span>
-                                    <span class="text-brand-gold font-bold">100% Score</span>
-                                </div>
-                                <div class="w-full h-2.5 bg-brand-card rounded-full overflow-hidden">
-                                    <div class="bg-brand-gold h-full rounded-full w-full"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span class="text-brand-muted">Traditional Luxury Brands</span>
-                                    <span class="text-brand-muted">75% Score</span>
-                                </div>
-                                <div class="w-full h-2.5 bg-brand-card rounded-full overflow-hidden">
-                                    <div class="bg-brand-muted h-full rounded-full w-3/4"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span class="text-brand-muted">Fast Retail Fashion</span>
-                                    <span class="text-brand-muted">30% Score</span>
-                                </div>
-                                <div class="w-full h-2.5 bg-brand-card rounded-full overflow-hidden">
-                                    <div class="bg-red-500/70 h-full rounded-full w-[30%]"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-8 pt-6 border-t border-brand-border text-center">
-                            <p class="text-xs text-brand-muted">Based on independent textile durability and ethical audit metrics (2026).</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. EDITORIAL / VISUAL SHOWCASE -->
-    <section id="showcase" class="py-24 bg-brand-surface/50 border-y border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-                <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Visual Journal</p>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">The Milan Editorial</h2>
+            <div class="text-center max-w-xl mx-auto mb-16" data-aos="fade-up">
+                <p class="text-[11px] uppercase tracking-[0.25em] text-brand-accent font-semibold mb-3">Visual Archive</p>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-white">Fall/Winter Editorial</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                <div class="md:col-span-8 rounded-2xl overflow-hidden relative group aspect-[16/10]" data-aos="fade-right">
-                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=1200" alt="Editorial Fashion Shot 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-8">
+                <div class="md:col-span-8 rounded-none overflow-hidden relative group aspect-[16/10]" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200" alt="Editorial Look 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
                         <div>
-                            <p class="text-xs uppercase tracking-widest text-brand-gold">Volume 04</p>
-                            <h3 class="font-serif text-2xl text-white font-medium">Chasing Shadows in Milan</h3>
+                            <p class="text-[10px] uppercase tracking-widest text-brand-accent">Series 02</p>
+                            <h3 class="text-lg text-white font-medium">Urban Architecture & Form</h3>
                         </div>
                     </div>
                 </div>
 
-                <div class="md:col-span-4 rounded-2xl overflow-hidden relative group aspect-[4/5] md:aspect-auto" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800" alt="Editorial Fashion Shot 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-8">
+                <div class="md:col-span-4 rounded-none overflow-hidden relative group aspect-[4/5] md:aspect-auto" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=800" alt="Editorial Look 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
                         <div>
-                            <p class="text-xs uppercase tracking-widest text-brand-gold">Knitwear Focus</p>
-                            <h3 class="font-serif text-xl text-white font-medium">Tactile Warmth</h3>
+                            <p class="text-[10px] uppercase tracking-widest text-brand-accent">Detail Focus</p>
+                            <h3 class="text-lg text-white font-medium">Heavyweight Structure</h3>
                         </div>
                     </div>
                 </div>
@@ -470,265 +370,152 @@
         </div>
     </section>
 
-    <!-- 8. TESTIMONIALS / SOCIAL PROOF -->
+    <!-- 7. REVIEWS -->
     <section id="testimonials" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-                <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Client Experiences</p>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Loved by Connoisseurs</h2>
+            <div class="text-center max-w-xl mx-auto mb-16" data-aos="fade-up">
+                <p class="text-[11px] uppercase tracking-[0.25em] text-brand-accent font-semibold mb-3">Customer Feedback</p>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-white">What Men Are Saying</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-none flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
                     <div>
-                        <div class="flex text-brand-gold space-x-1 mb-4">
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                        <div class="flex text-brand-accent space-x-1 mb-4">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
                         </div>
-                        <p class="text-brand-sand text-sm leading-relaxed mb-6 font-normal">
-                            "The quality of the cashmere trench coat completely blew me away. It feels heavier, softer, and more structured than pieces I've purchased from legacy luxury houses at triple the price."
+                        <p class="text-brand-sand text-xs leading-relaxed mb-6 font-normal">
+                            "Finding hoodies with actual weight and structure used to be tough without paying designer luxury labels. The 450 GSM boxy hoodie is phenomenal."
                         </p>
                     </div>
-                    <div class="flex items-center space-x-3 pt-4 border-t border-brand-border">
-                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center font-serif font-bold text-brand-gold">
-                            VS
-                        </div>
-                        <div>
-                            <p class="text-sm font-semibold text-white">Victoria Sinclair</p>
-                            <p class="text-xs text-brand-muted">Fashion Director, New York</p>
-                        </div>
+                    <div class="pt-4 border-t border-brand-border">
+                        <p class="text-xs font-semibold text-white">David K.</p>
+                        <p class="text-[11px] text-brand-muted">Verified Buyer • Seattle, WA</p>
                     </div>
                 </div>
 
-                <!-- Testimonial 2 -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass-panel p-6 rounded-none flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
                     <div>
-                        <div class="flex text-brand-gold space-x-1 mb-4">
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                        <div class="flex text-brand-accent space-x-1 mb-4">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
                         </div>
-                        <p class="text-brand-sand text-sm leading-relaxed mb-6 font-normal">
-                            "Finding ethical clothing that doesn't compromise on sleek, minimalist aesthetics used to be impossible. Aurelia nails it. The packaging alone felt like opening a high-end gift."
+                        <p class="text-brand-sand text-xs leading-relaxed mb-6 font-normal">
+                            "Clean UI, straightforward shipping, and the trousers fit straight out of the box with zero alterations needed. Clean aesthetic."
                         </p>
                     </div>
-                    <div class="flex items-center space-x-3 pt-4 border-t border-brand-border">
-                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center font-serif font-bold text-brand-gold">
-                            EL
-                        </div>
-                        <div>
-                            <p class="text-sm font-semibold text-white">Elena Laurent</p>
-                            <p class="text-xs text-brand-muted">Architect & Designer, Paris</p>
-                        </div>
+                    <div class="pt-4 border-t border-brand-border">
+                        <p class="text-xs font-semibold text-white">Marcus T.</p>
+                        <p class="text-[11px] text-brand-muted">Verified Buyer • Austin, TX</p>
                     </div>
                 </div>
 
-                <!-- Testimonial 3 -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                <div class="glass-panel p-6 rounded-none flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
                     <div>
-                        <div class="flex text-brand-gold space-x-1 mb-4">
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-gold"></i>
+                        <div class="flex text-brand-accent space-x-1 mb-4">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-accent"></i>
                         </div>
-                        <p class="text-brand-sand text-sm leading-relaxed mb-6 font-normal">
-                            "Immaculate tailoring. The obsidian slip dress fits like a glove. Customer support even helped me with custom sizing measurements prior to shipment. Exceptional service."
+                        <p class="text-brand-sand text-xs leading-relaxed mb-6 font-normal">
+                            "Minimalist packaging, zero plastic waste, and the heavyweight tees maintain their shape wash after wash. Solid work."
                         </p>
                     </div>
-                    <div class="flex items-center space-x-3 pt-4 border-t border-brand-border">
-                        <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center font-serif font-bold text-brand-gold">
-                            MC
-                        </div>
-                        <div>
-                            <p class="text-sm font-semibold text-white">Marcus Chen</p>
-                            <p class="text-xs text-brand-muted">Creative Consultant, London</p>
-                        </div>
+                    <div class="pt-4 border-t border-brand-border">
+                        <p class="text-xs font-semibold text-white">Julian M.</p>
+                        <p class="text-[11px] text-brand-muted">Verified Buyer • Toronto, ON</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 9. PRICING / MEMBERSHIP PERKS SECTION -->
-    <section class="py-24 bg-brand-surface/40 border-t border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-                <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">VIP Privilege</p>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">The Aurelia Circle</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Standard Client -->
-                <div class="glass-panel p-8 rounded-3xl border border-brand-border" data-aos="fade-up" data-aos-delay="100">
-                    <p class="text-xs uppercase tracking-widest text-brand-muted mb-2">Standard Access</p>
-                    <h3 class="font-serif text-2xl font-bold text-white mb-4">Guest Shopper</h3>
-                    <p class="text-brand-muted text-sm mb-6">Standard online catalog access with carbon-neutral shipping.</p>
-                    <div class="text-3xl font-bold text-white mb-8">Free <span class="text-xs font-normal text-brand-muted">/ lifetime</span></div>
-                    <ul class="space-y-3 mb-8 text-sm text-brand-sand">
-                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>Standard catalog ordering</span></li>
-                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>30-day effortless returns</span></li>
-                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>Standard standard packaging</span></li>
-                    </ul>
-                    <a href="#collection" class="w-full py-3.5 glass-panel text-white font-semibold text-xs tracking-widest uppercase rounded-xl hover:border-brand-gold block text-center transition-all">Shop Now</a>
-                </div>
-
-                <!-- VIP Circle -->
-                <div class="bg-gradient-to-b from-brand-card to-brand-surface p-8 rounded-3xl border-2 border-brand-gold relative shadow-2xl shadow-brand-gold/5" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute -top-3.5 right-8 bg-brand-gold text-brand-dark text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">Exclusive Access</div>
-                    <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">VIP Membership</p>
-                    <h3 class="font-serif text-2xl font-bold text-white mb-4">The Inner Circle</h3>
-                    <p class="text-brand-muted text-sm mb-6">For collectors and enthusiasts wanting early private drop access.</p>
-                    <div class="text-3xl font-bold text-white mb-8">$150 <span class="text-xs font-normal text-brand-muted">/ annual credit back</span></div>
-                    <ul class="space-y-3 mb-8 text-sm text-white">
-                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>24-hour early access to seasonal drops</span></li>
-                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>Complimentary annual garment mending</span></li>
-                        <li class="flex items-center space-x-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i><span>Private virtual or in-store styling session</span></li>
-                    </ul>
-                    <button onclick="alert('Welcome to waitlist for The Inner Circle!')" class="w-full py-3.5 bg-brand-gold text-brand-dark font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-white transition-all shadow-lg">Join Inner Circle</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 10. FAQ SECTION -->
-    <section id="faq" class="py-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- 8. FAQ SECTION -->
+    <section id="faq" class="py-24 bg-brand-surface/30 border-t border-brand-border">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <p class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">Got Questions?</p>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Frequently Asked Questions</h2>
+                <p class="text-[11px] uppercase tracking-[0.25em] text-brand-accent font-semibold mb-3">Help & Info</p>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-white">Frequently Asked Questions</h2>
             </div>
 
-            <div class="space-y-4" data-aos="fade-up">
-                <!-- FAQ Item 1 -->
-                <div class="glass-panel rounded-2xl overflow-hidden border border-brand-border">
-                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center text-white font-serif text-lg focus:outline-none">
-                        <span>How do your sizes run compared to standard luxury sizing?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+            <div class="space-y-3" data-aos="fade-up">
+                <div class="glass-panel rounded-none border border-brand-border">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex justify-between items-center text-white text-sm font-medium focus:outline-none">
+                        <span>How do your fits run? Are they boxy or slim?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
                     </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-brand-muted text-sm leading-relaxed">
-                        <p class="pb-6">Our cuts are designed with modern architectural European tailoring. We recommend consulting our detailed dimensional sizing calculator on each product page or booking a quick virtual consultation with our stylists.</p>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-5 text-brand-muted text-xs leading-relaxed">
+                        <p class="pb-5">Our silhouettes are purposely structured with a modern relaxed or boxy drape. If you prefer a standard traditional fit, we recommend checking individual product dimension charts or sizing down.</p>
                     </div>
                 </div>
 
-                <!-- FAQ Item 2 -->
-                <div class="glass-panel rounded-2xl overflow-hidden border border-brand-border">
-                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center text-white font-serif text-lg focus:outline-none">
-                        <span>What is your return and exchange policy?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                <div class="glass-panel rounded-none border border-brand-border">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex justify-between items-center text-white text-sm font-medium focus:outline-none">
+                        <span>What is your shipping and return policy?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
                     </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-brand-muted text-sm leading-relaxed">
-                        <p class="pb-6">We offer hassle-free 30-day returns and exchanges worldwide. Items must be unworn, unwashed, and in original packaging with tags attached. Return shipping labels are fully prepaid.</p>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-5 text-brand-muted text-xs leading-relaxed">
+                        <p class="pb-5">We offer fast worldwide shipping. All domestic orders include hassle-free 30-day returns with prepaid digital drop-off labels.</p>
                     </div>
                 </div>
 
-                <!-- FAQ Item 3 -->
-                <div class="glass-panel rounded-2xl overflow-hidden border border-brand-border">
-                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center text-white font-serif text-lg focus:outline-none">
-                        <span>How is Aurelia certified sustainable?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                <div class="glass-panel rounded-none border border-brand-border">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex justify-between items-center text-white text-sm font-medium focus:outline-none">
+                        <span>How do I care for heavyweight cotton garments?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
                     </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-brand-muted text-sm leading-relaxed">
-                        <p class="pb-6">We source 100% GOTS-certified organic cotton, RMS-certified ethical wool, and OEKO-TEX certified dyes. Every partner atelier undergoes annual third-party social and environmental audits.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="glass-panel rounded-2xl overflow-hidden border border-brand-border">
-                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center text-white font-serif text-lg focus:outline-none">
-                        <span>How should I care for my cashmere and silk garments?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
-                    </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-brand-muted text-sm leading-relaxed">
-                        <p class="pb-6">We recommend hand washing in cold water with organic wool/silk detergent or professional eco-dry cleaning. Each garment comes with a specialized cedar storage pouch to protect against elements.</p>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-5 text-brand-muted text-xs leading-relaxed">
+                        <p class="pb-5">Machine wash cold on a gentle cycle with similar colors. Line dry or tumble dry low to preserve the structure and prevent fabric breakdown.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 11. FINAL CONVERSION CTA SECTION -->
-    <section class="py-24 relative overflow-hidden bg-brand-surface/80 border-t border-brand-border">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-gold/10 via-transparent to-transparent pointer-events-none"></div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="zoom-in">
-            <span class="text-xs uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3 block">Limited Inventory Drop</span>
-            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white mb-6">Elevate Your Wardrobe Today.</h2>
-            <p class="text-brand-muted text-base max-w-xl mx-auto mb-10 leading-relaxed">
-                Join thousands of conscious fashion leaders worldwide. Experience immaculate craftsmanship delivered directly to your doorstep.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#collection" class="w-full sm:w-auto px-10 py-4 bg-white text-black font-semibold text-sm tracking-widest uppercase rounded-full hover:bg-brand-gold transition-all duration-300 shadow-xl shadow-white/5">
-                    Shop The Collection
-                </a>
-                <a href="#collection" class="w-full sm:w-auto px-10 py-4 glass-panel text-white font-semibold text-sm tracking-widest uppercase rounded-full hover:border-brand-gold transition-all duration-300">
-                    Explore Lookbook
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 12. FOOTER -->
-    <footer class="bg-brand-dark border-t border-brand-border pt-16 pb-12 text-brand-muted text-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-brand-border">
-            <!-- Col 1: Brand Info -->
-            <div class="md:col-span-4 space-y-4">
-                <a href="#" class="font-serif text-2xl tracking-[0.2em] font-bold text-white">AURELIA</a>
-                <p class="text-xs leading-relaxed max-w-xs">
-                    Modern minimalist luxury crafted for timeless elegance and zero-compromise environmental sustainability.
+    <!-- 9. FOOTER -->
+    <footer class="bg-brand-dark border-t border-brand-border pt-16 pb-12 text-brand-muted text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-brand-border">
+            <div class="md:col-span-5 space-y-4">
+                <a href="#" class="text-sm tracking-[0.25em] font-bold text-white uppercase">EXAMPLE CLOTHINGS</a>
+                <p class="text-[11px] leading-relaxed max-w-sm">
+                    Functional minimalist menswear designed with uncompromised material density, clean forms, and straightforward craftsmanship.
                 </p>
-                <div class="flex space-x-4 pt-2">
-                    <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-white hover:text-brand-gold transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                    <a href="#" aria-label="Twitter" class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-white hover:text-brand-gold transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
-                    <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-white hover:text-brand-gold transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
-                </div>
             </div>
 
-            <!-- Col 2: Quick Links -->
-            <div class="md:col-span-2 space-y-3">
-                <p class="text-xs uppercase tracking-widest text-white font-semibold mb-4">Shop</p>
-                <ul class="space-y-2.5 text-xs">
-                    <li><a href="#collection" class="hover:text-white transition-colors">Outerwear</a></li>
-                    <li><a href="#collection" class="hover:text-white transition-colors">Knitwear</a></li>
-                    <li><a href="#collection" class="hover:text-white transition-colors">Silk Essentials</a></li>
-                    <li><a href="#collection" class="hover:text-white transition-colors">Accessories</a></li>
+            <div class="md:col-span-3 space-y-3">
+                <p class="text-[11px] uppercase tracking-widest text-white font-semibold">Navigation</p>
+                <ul class="space-y-2 text-[11px]">
+                    <li><a href="#collection" class="hover:text-white transition-colors">Shop Catalog</a></li>
+                    <li><a href="#features" class="hover:text-white transition-colors">Our Craft</a></li>
+                    <li><a href="#showcase" class="hover:text-white transition-colors">Lookbook</a></li>
+                    <li><a href="#faq" class="hover:text-white transition-colors">Support & FAQ</a></li>
                 </ul>
             </div>
 
-            <!-- Col 3: Company -->
-            <div class="md:col-span-2 space-y-3">
-                <p class="text-xs uppercase tracking-widest text-white font-semibold mb-4">Company</p>
-                <ul class="space-y-2.5 text-xs">
-                    <li><a href="#features" class="hover:text-white transition-colors">Philosophy</a></li>
-                    <li><a href="#showcase" class="hover:text-white transition-colors">Sustainability</a></li>
-                    <li><a href="#testimonials" class="hover:text-white transition-colors">Press & Media</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 4: Newsletter Signup -->
-            <div class="md:col-span-4 space-y-4">
-                <p class="text-xs uppercase tracking-widest text-white font-semibold">Join The Journal</p>
-                <p class="text-xs">Receive private invites to seasonal drops and 10% off your first order.</p>
-                <form onsubmit="event.preventDefault(); alert('Thank you for subscribing to Aurelia Journal!');" class="flex items-center space-x-2">
-                    <input type="email" placeholder="Enter your email" required class="bg-brand-surface border border-brand-border rounded-xl px-4 py-3 text-xs text-white placeholder-brand-muted focus:outline-none focus:border-brand-gold flex-1">
-                    <button type="submit" class="px-5 py-3 bg-white text-black text-xs font-semibold uppercase tracking-widest rounded-xl hover:bg-brand-gold transition-colors">Join</button>
+            <div class="md:col-span-4 space-y-3">
+                <p class="text-[11px] uppercase tracking-widest text-white font-semibold">Stay Updated</p>
+                <p class="text-[11px]">Join our newsletter for drop access and member pricing.</p>
+                <form onsubmit="event.preventDefault(); alert('Subscribed successfully to Example Clothings.');" class="flex items-center space-x-2 pt-1">
+                    <input type="email" placeholder="Email address" required class="bg-brand-surface border border-brand-border rounded-none px-3.5 py-2.5 text-xs text-white placeholder-brand-muted focus:outline-none focus:border-brand-accent flex-1">
+                    <button type="submit" class="px-4 py-2.5 bg-white text-black text-[11px] font-semibold uppercase tracking-widest rounded-none hover:bg-brand-accent transition-colors">Join</button>
                 </form>
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-brand-muted">
-            <p>&copy; 2026 AURELIA Studio Inc. All rights reserved.</p>
-            <div class="flex space-x-6 mt-4 sm:mt-0">
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px]">
+            <p>&copy; 2026 EXAMPLE CLOTHINGS Inc. All rights reserved.</p>
+            <div class="flex space-x-6 mt-3 sm:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
             </div>
         </div>
     </footer>
@@ -739,46 +526,36 @@
         <div id="cart-panel" class="absolute inset-y-0 right-0 max-w-full flex pl-10 transform translate-x-full transition-transform duration-300 ease-in-out">
             <div class="w-screen max-w-md bg-brand-surface border-l border-brand-border p-6 flex flex-col justify-between">
                 <div>
-                    <div class="flex items-center justify-between pb-6 border-b border-brand-border">
+                    <div class="flex items-center justify-between pb-4 border-b border-brand-border">
                         <div class="flex items-center space-x-2">
-                            <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-gold"></i>
-                            <h2 class="font-serif text-lg font-bold text-white">Your Shopping Bag (2)</h2>
+                            <i data-lucide="shopping-bag" class="w-4 h-4 text-brand-accent"></i>
+                            <h2 class="text-sm font-bold text-white uppercase tracking-wider">Cart (1)</h2>
                         </div>
-                        <button onclick="toggleCart()" class="text-brand-muted hover:text-white p-2">
+                        <button onclick="toggleCart()" class="text-brand-muted hover:text-white p-1">
                             <i data-lucide="x" class="w-5 h-5"></i>
                         </button>
                     </div>
 
-                    <!-- Cart Items List -->
-                    <div class="py-6 space-y-4 overflow-y-auto max-h-[60vh]">
-                        <div class="flex space-x-4 items-center bg-brand-card p-3 rounded-xl border border-brand-border">
-                            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=200" alt="Item" class="w-16 h-20 object-cover rounded-lg">
+                    <!-- Cart Item -->
+                    <div class="py-6 space-y-4">
+                        <div class="flex space-x-4 items-center bg-brand-card p-3 border border-brand-border">
+                            <img src="https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&q=80&w=200" alt="Item" class="w-14 h-16 object-cover">
                             <div class="flex-1">
-                                <h4 class="text-sm font-semibold text-white font-serif">The Obsidian Silk Slip Dress</h4>
-                                <p class="text-xs text-brand-muted mt-0.5">Size: M • Onyx</p>
-                                <p class="text-xs font-semibold text-white mt-2">$280</p>
-                            </div>
-                        </div>
-                        <div class="flex space-x-4 items-center bg-brand-card p-3 rounded-xl border border-brand-border">
-                            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=200" alt="Item" class="w-16 h-20 object-cover rounded-lg">
-                            <div class="flex-1">
-                                <h4 class="text-sm font-semibold text-white font-serif">Ribbed Cashmere Turtleneck</h4>
-                                <p class="text-xs text-brand-muted mt-0.5">Size: S • Ivory</p>
-                                <p class="text-xs font-semibold text-white mt-2">$320</p>
+                                <h4 class="text-xs font-semibold text-white">The Heavyweight Boxy Hoodie</h4>
+                                <p class="text-[11px] text-brand-muted mt-0.5">Size: L • Washed Black</p>
+                                <p class="text-xs font-semibold text-white mt-1">$165</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Cart Footer Subtotal & Checkout -->
-                <div class="pt-6 border-t border-brand-border space-y-4">
-                    <div class="flex justify-between text-sm">
+                <div class="pt-4 border-t border-brand-border space-y-4">
+                    <div class="flex justify-between text-xs">
                         <span class="text-brand-muted">Subtotal</span>
-                        <span class="text-white font-bold">$600.00</span>
+                        <span class="text-white font-bold">$165.00</span>
                     </div>
-                    <p class="text-[11px] text-brand-gold">✓ You qualify for complimentary express carbon-neutral shipping.</p>
-                    <button onclick="alert('Proceeding to secure checkout...'); toggleCart();" class="w-full py-4 bg-white text-black font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-brand-gold transition-all shadow-lg text-center block">
-                        Proceed to Secure Checkout
+                    <button onclick="alert('Proceeding to checkout...'); toggleCart();" class="w-full py-3.5 bg-white text-black font-semibold text-xs tracking-widest uppercase hover:bg-brand-accent transition-all text-center block">
+                        Checkout Securely
                     </button>
                 </div>
             </div>
@@ -788,62 +565,50 @@
     <!-- QUICK BUY MODAL -->
     <div id="quick-buy-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
         <div onclick="closeQuickBuy()" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
-        <div class="glass-panel max-w-lg w-full p-8 rounded-3xl relative z-10 border border-brand-border transform scale-95 transition-transform duration-300" id="quick-buy-content">
-            <button onclick="closeQuickBuy()" class="absolute top-6 right-6 text-brand-muted hover:text-white">
-                <i data-lucide="x" class="w-5 h-5"></i>
+        <div class="glass-panel max-w-md w-full p-6 relative z-10 border border-brand-border transform scale-95 transition-transform duration-300" id="quick-buy-content">
+            <button onclick="closeQuickBuy()" class="absolute top-4 right-4 text-brand-muted hover:text-white">
+                <i data-lucide="x" class="w-4 h-4"></i>
             </button>
-            <div class="flex space-x-6 items-center mb-6">
-                <img id="modal-img" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=300" alt="Product" class="w-24 h-32 object-cover rounded-xl border border-brand-border">
+            <div class="flex space-x-4 items-center mb-6">
+                <img id="modal-img" src="https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&q=80&w=200" alt="Product" class="w-20 h-24 object-cover border border-brand-border">
                 <div>
-                    <span class="text-[10px] uppercase tracking-widest text-brand-gold font-semibold">Instant Order</span>
-                    <h3 id="modal-title" class="font-serif text-xl font-bold text-white mt-1">The Obsidian Silk Slip Dress</h3>
-                    <p id="modal-price" class="text-lg font-semibold text-white mt-2">$280</p>
+                    <span class="text-[10px] uppercase tracking-widest text-brand-accent font-semibold">Quick Order</span>
+                    <h3 id="modal-title" class="text-sm font-bold text-white mt-0.5">The Heavyweight Boxy Hoodie</h3>
+                    <p id="modal-price" class="text-xs font-semibold text-white mt-1">$165</p>
                 </div>
             </div>
             
-            <div class="space-y-4 mb-6">
-                <div>
-                    <label class="text-xs uppercase tracking-wider text-brand-muted block mb-2">Select Size</label>
-                    <div class="grid grid-cols-4 gap-2">
-                        <button class="py-2.5 rounded-xl border border-brand-border text-xs font-semibold text-white hover:border-brand-gold transition-all">XS</button>
-                        <button class="py-2.5 rounded-xl border border-brand-gold bg-brand-gold/10 text-xs font-semibold text-brand-gold">S</button>
-                        <button class="py-2.5 rounded-xl border border-brand-border text-xs font-semibold text-white hover:border-brand-gold transition-all">M</button>
-                        <button class="py-2.5 rounded-xl border border-brand-border text-xs font-semibold text-white hover:border-brand-gold transition-all">L</button>
-                    </div>
+            <div class="space-y-3 mb-6">
+                <label class="text-[11px] uppercase tracking-wider text-brand-muted block">Select Size</label>
+                <div class="grid grid-cols-4 gap-2">
+                    <button class="py-2 border border-brand-border text-xs font-semibold text-white hover:border-brand-accent transition-all">S</button>
+                    <button class="py-2 border border-brand-border text-xs font-semibold text-white hover:border-brand-accent transition-all">M</button>
+                    <button class="py-2 border border-brand-accent bg-brand-accent/10 text-xs font-semibold text-brand-accent">L</button>
+                    <button class="py-2 border border-brand-border text-xs font-semibold text-white hover:border-brand-accent transition-all">XL</button>
                 </div>
             </div>
 
-            <button onclick="alert('Item added successfully to your shopping bag!'); closeQuickBuy(); toggleCart();" class="w-full py-4 bg-white text-black font-semibold text-xs tracking-widest uppercase rounded-xl hover:bg-brand-gold transition-all shadow-lg text-center">
-                Add to Bag & Checkout
+            <button onclick="alert('Item added to cart.'); closeQuickBuy(); toggleCart();" class="w-full py-3.5 bg-white text-black font-semibold text-[11px] tracking-widest uppercase hover:bg-brand-accent transition-all text-center">
+                Add to Cart
             </button>
         </div>
     </div>
 
-    <!-- Scripts: Lucide Icons Initialization & AOS Animation Runner -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS animations
-        AOS.init({
-            once: true,
-            offset: 50,
-            duration: 800,
-            easing: 'ease-out-cubic'
-        });
-
-        // Initialize Lucide Icons
+        AOS.init({ once: true, offset: 40, duration: 700, easing: 'ease-out-cubic' });
         lucide.createIcons();
 
-        // Navbar Scroll Glass effect enhancement
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 40) {
-                navbar.classList.add('shadow-xl', 'bg-brand-dark/95');
+            if (window.scrollY > 30) {
+                navbar.classList.add('shadow-lg', 'bg-brand-dark/95');
             } else {
-                navbar.classList.remove('shadow-xl', 'bg-brand-dark/95');
+                navbar.classList.remove('shadow-lg', 'bg-brand-dark/95');
             }
         });
 
-        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             if (menu.classList.contains('-translate-y-full')) {
@@ -855,7 +620,6 @@
             }
         }
 
-        // Slide-over Cart Toggle
         function toggleCart() {
             const drawer = document.getElementById('cart-drawer');
             const backdrop = document.getElementById('cart-backdrop');
@@ -870,13 +634,10 @@
                 backdrop.classList.remove('opacity-100', 'pointer-events-auto');
                 backdrop.classList.add('opacity-0', 'pointer-events-none');
                 panel.classList.add('translate-x-full');
-                setTimeout(() => {
-                    drawer.classList.add('pointer-events-none');
-                }, 300);
+                setTimeout(() => { drawer.classList.add('pointer-events-none'); }, 300);
             }
         }
 
-        // Quick Buy Modal Open/Close
         function openQuickBuy(title, price) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-price').innerText = price;
@@ -899,7 +660,6 @@
             content.classList.add('scale-95');
         }
 
-        // FAQ Accordion Toggle
         function toggleFaq(button) {
             const content = button.nextElementSibling;
             const icon = button.querySelector('[data-lucide="chevron-down"]');
